@@ -20,6 +20,22 @@ public:
 
 	virtual bool onAccept(SOCKET socket, SOCKADDR_IN addrinfo);
 	virtual void onSend(size_t transferSzie) = 0;
-	virtual void SendPacket(Packet * packet) = 0;
-	virtual Package * onRecv(size_t transferSize) = 0;
+	//virtual void SendPacket(Packet * packet) = 0;
+	//virtual Package * onRecv(size_t transferSize) = 0;
+	virtual void recvStandBy() {};
+	virtual void onClose();
+
+	SOCKET & getSocket();
+	str_t clientAddress();
+
+	oid_t getId();
+	void setId(oid_t id);
+
+	int8_t getType();
+	void settype(int8_t type);
+
+	tick_t heartBeat();
+	void updateHeartBeat();
+
+	
 };
