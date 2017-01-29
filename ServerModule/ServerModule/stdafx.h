@@ -43,6 +43,7 @@
 #include<unordered_set>
 #include<vector>
 #include<map>
+#include<unordered_map>
 
 #include<string>
 #include<tchar.h>
@@ -66,7 +67,7 @@ using namespace tbb;
 
 
 #include"Network\Contents\ContentsProcess.h"
-
+#include"Network\Session\SessionManager.h"
 #include"Network\Session\Session.h"
 
 #include"Network\Server\Server.h"

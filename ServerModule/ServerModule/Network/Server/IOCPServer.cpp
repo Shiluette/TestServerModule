@@ -62,11 +62,13 @@ DWORD IOCPServer::acceptThread(LPVOID serverPtr)
 
 DWORD IOCPServer::workerThread(LPVOID serverPtr)
 {
+	// TODO ::
 	return 0;
 }
 
 IOCPServer::IOCPServer(ContentsProcess * contentsProcess) : Server(contentsProcess)
 {
+	// TODO ::
 }
 
 IOCPServer::~IOCPServer()
@@ -76,17 +78,18 @@ IOCPServer::~IOCPServer()
 
 bool IOCPServer::run()
 {
+	// TODO ::
 	return false;
 }
 
 SOCKET IOCPServer::listenSocekt()
 {
-	return SOCKET();
+	return _listenSocket;
 }
 
 HANDLE IOCPServer::iocp()
 {
-	return HANDLE();
+	return _giocp;
 }
 
 void IOCPServer::onAceept(SOCKET accepter, SOCKADDR_IN addrInfo)

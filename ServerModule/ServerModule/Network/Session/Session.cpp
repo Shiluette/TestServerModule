@@ -43,12 +43,13 @@ bool Session::onAccept(SOCKET socket, SOCKADDR_IN addrinfo)
 
 void Session::onClose()
 {
+	// TODO: 세션을 닫기 위한 기능이 필요
+	SessionManager::getInstance().closeSession(this);
 }
 
 SOCKET & Session::getSocket()
 {
 	return _socketData._socket;
-	// TODO: 여기에 반환 구문을 삽입합니다.
 }
 
 str_t Session::clientAddress()

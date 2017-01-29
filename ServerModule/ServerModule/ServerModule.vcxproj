@@ -157,7 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Network\Contents\ContentsProcess.h" />
+    <ClInclude Include="Network\Session\IOCPSession.h" />
     <ClInclude Include="Network\Session\Session.h" />
+    <ClInclude Include="Network\Session\SessionManager.h" />
     <ClInclude Include="Shutdown.h" />
     <ClInclude Include="Util\Clock.h" />
     <ClInclude Include="Util\Lock.h" />
@@ -176,7 +178,9 @@
   <ItemGroup>
     <ClCompile Include="Network\Contents\ContentsProcess.cpp" />
     <ClCompile Include="Network\Server\IOCPServer.cpp" />
+    <ClCompile Include="Network\Session\IOCPSession.cpp" />
     <ClCompile Include="Network\Session\Session.cpp" />
+    <ClCompile Include="Network\Session\SessionManager.cpp" />
     <ClCompile Include="Shutdown.cpp" />
     <ClCompile Include="Util\Clock.cpp" />
     <ClCompile Include="Util\Lock.cpp" />
