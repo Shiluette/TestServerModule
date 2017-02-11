@@ -3,7 +3,7 @@
 
 
 // # 연산자(매개변수 변환용) , ## 연산자(전달인자를 다른대상에 이어줄때 사용.)
-#define MAKE_THREAD(className, proces) (new Thread(new thread_##::##process, this), L#className))
+#define MAKE_THREAD(className, proces) (new Thread(new thread_t(&className##::##process, this), L#className))
 #define GET_CURRENT_THREAD_ID std::this_thread::get_id()
 class Lock;
 typedef std::function<void(void *)> ThreadFunction;

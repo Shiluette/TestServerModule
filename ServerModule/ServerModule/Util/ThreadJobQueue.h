@@ -37,7 +37,7 @@ public:
 		_writeQueue->push(t);
 	}
 	// 
-	inline void pop(T &t) {
+	inline bool pop(T &t) {
 		SAFE_LOCK(_lock);
 		size_t size = this->size();
 		if (size == 0) {

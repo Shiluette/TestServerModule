@@ -49,6 +49,12 @@
 #include<tchar.h>
 #include<typeinfo>
 
+#if _DEBUG
+#define CONTEXT_SWITCH  Sleep(1)
+#else;
+#define CONTEXT_SWITCH  ::SwitchToThread()
+#endif
+
 
 //#include"./include/tbb/tbb.h"
 
