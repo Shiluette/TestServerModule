@@ -1,6 +1,8 @@
 #pragma once
 #include"stdafx.h"
 
+class Packet;
+class Package;
 struct SOCKET_DATA {
 	SOCKET _socket;
 	SOCKADDR_IN _addrInfo;
@@ -20,8 +22,8 @@ public:
 
 	virtual bool onAccept(SOCKET socket, SOCKADDR_IN addrinfo);
 	virtual void onSend(size_t transferSzie) = 0;
-	//virtual void SendPacket(Packet * packet) = 0;
-	//virtual Package * onRecv(size_t transferSize) = 0;
+	virtual void sendpacket(Packet * packet) = 0;
+	virtual Package * onrecv(size_t transfersize) = 0;
 	virtual void recvStandBy() {};
 	virtual void onClose();
 

@@ -158,6 +158,11 @@
   <ItemGroup>
     <ClInclude Include="Network\Contents\ContentsProcess.h" />
     <ClInclude Include="Network\Session\IOCPSession.h" />
+    <ClInclude Include="Network\Session\Package.h" />
+    <ClInclude Include="Network\Session\Packet.h" />
+    <ClInclude Include="Network\Session\PacketAnalyzer.h" />
+    <ClInclude Include="Network\Session\PacketFactory.h" />
+    <ClInclude Include="Network\Session\PacketHeader.h" />
     <ClInclude Include="Network\Session\Session.h" />
     <ClInclude Include="Network\Session\SessionManager.h" />
     <ClInclude Include="Shutdown.h" />
@@ -169,6 +174,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Util\Metrix.h" />
     <ClInclude Include="Util\Singleton.h" />
+    <ClInclude Include="Util\Stream.h" />
     <ClInclude Include="Util\Thread.h" />
     <ClInclude Include="Util\ThreadJobQueue.h" />
     <ClInclude Include="Util\Type.h" />
@@ -179,6 +185,7 @@
     <ClCompile Include="Network\Contents\ContentsProcess.cpp" />
     <ClCompile Include="Network\Server\IOCPServer.cpp" />
     <ClCompile Include="Network\Session\IOCPSession.cpp" />
+    <ClCompile Include="Network\Session\PacketAnalyzer.cpp" />
     <ClCompile Include="Network\Session\Session.cpp" />
     <ClCompile Include="Network\Session\SessionManager.cpp" />
     <ClCompile Include="Shutdown.cpp" />
@@ -193,6 +200,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Util\Metrix.cpp" />
+    <ClCompile Include="Util\Stream.cpp" />
     <ClCompile Include="Util\Thread.cpp" />
     <ClCompile Include="Util\Vector2D.cpp" />
   </ItemGroup>

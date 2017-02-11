@@ -1,7 +1,8 @@
 #include"stdafx.h"
 #include"Session.h"
-#include "IOCPSession.h"
+#include"IOCPSession.h"
 #include"SessionManager.h"
+#include"PacketAnalyzer.h"
 
 
 IoData::IoData()
@@ -20,8 +21,14 @@ void IoData::clear()
 
 int32_t IoData::setupTotalBytes()
 {
-	// TODO ::
-	return int32_t();
+	packet_size_t offset = 0;
+	packet_size_t packetLen[1] = { 0, };
+	if (_totalBytes == 0) {
+		memcpy_s((void*)packetLen, sizeof(packetLen), (void *)_buffer.data(), sizeof(packetLen));
+		_totalBytes = (size_t)packetLen[0];
+	}
+	offset += sizeof(packetLen);
+	return offset;
 }
 
 size_t IoData::totalByte()
@@ -52,15 +59,34 @@ char * IoData::data()
 	return _buffer.data();
 }
 
-bool IoData::setData()
+bool IoData::setData(Stream & stream)
 {
-	// TODO ::
 	this->clear();
 
-	//if (_buffer.max_size() <= data.size()) {
-	//	// TODO : 버퍼보다 큰 데이터를 보낼려고 함. log 메시지 출력
-	//	return false;
-	//}
+	if (_buffer.max_size() <= stream.size()) {
+		// TODO : 버퍼보다 큰 데이터를 보낼려고 함. log 메시지 출력
+		return false;
+	}
+	packet_size_t offset = 0;
+	char *buf = _buffer.data();
+
+	// 코딩 센스! memcpy_s 인자  포인터 값 넘겨야함
+	// Packetlen = 인자를 넣을때 (void*)& packetLen으로 넣는 방안
+	// 배열의 이름은 포인터니 packetLen[1] 으로 하여 (void*)PacketLen 이 둘의 차이점.
+	packet_size_t packetLen[1] = { sizeof(packet_size_t) + (packet_size_t)stream.size(), };
+
+	// 데이텅 앞부분에 데이터의 총 크기를 작성
+	memcpy_s(buf + offset, _buffer.max_size(), (void *)packetLen, sizeof(packetLen));
+
+	// 앞 부분의 4바이트를 사용하였음 -> offset move
+	offset += sizeof(packetLen);
+
+	memcpy_s(buf + offset, _buffer.max_size(), (void *)stream.data(), (int32_t)stream.size());
+	
+	offset += (packet_size_t)stream.size();
+
+	_totalBytes = offset;
+	return true;
 }
 
 LPWSAOVERLAPPED IoData::overlapped()
@@ -125,15 +151,58 @@ IOCPSession::IOCPSession()
 
 void IOCPSession::onSend(size_t size)
 {
-	// TODO ::
+	if (_ioData[IO_WRITE].lackIOBuf(size)) {
+		this->send(_ioData[IO_WRITE].wsaBuf());
+	}
 }
 
-void IOCPSession::sendPacket()
+void IOCPSession::sendPacket(Packet * packet)
 {
-	// TODO ::
+	Stream stream;
+	packet->encode(stream);
+	
+	if (!_ioData[IO_WRITE].setData(stream)) {
+		return;
+	}
+	WSABUF wsabuf;
+	wsabuf.buf = _ioData[IO_WRITE].data();
+	wsabuf.len = (ULONG)stream.size();
+
+	this->send(wsabuf);
+	this->recvStandBy();
+}
+
+Package * IOCPSession::onRecv(size_t size)
+{
+	packet_size_t offset = 0;
+	offset += _ioData[IO_READ].setupTotalBytes();
+
+	if (this->isRecving(size)) {
+		return nullptr;
+	}
+
+	packet_size_t packetdataSize = _ioData[IO_READ].totalByte() - sizeof(packet_size_t);
+	byte * packetData = (byte*)_ioData[IO_READ].data() - offset;
+
+	Packet *packet = PacketAnalyzer::getInstance().analyzer((const char*)packetData, packetdataSize);
+	if (packet == nullptr) {
+		// TODO : long 출력
+		this->onClose();
+		return nullptr;
+	}
+	this->recvStandBy();
+	Package * package = new Package(this, packet);
+	return package;
+
 }
 
 void IOCPSession::reccvStandBy()
 {
 	_ioData[IO_READ].clear();
+
+	WSABUF wsabuf;
+	wsabuf.buf = _ioData[IO_READ].data();
+	wsabuf.len = SOCKET_BUF_SIZE;
+
+	this->recv(wsabuf);
 }

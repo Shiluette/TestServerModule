@@ -13,6 +13,7 @@ typedef std::recursive_mutex lock_t;
 
 typedef std::string str_t;
 typedef std::wstring wstr_t;
+typedef INT64 Int64;
 
 enum {
 	SIZE_8 = 8,

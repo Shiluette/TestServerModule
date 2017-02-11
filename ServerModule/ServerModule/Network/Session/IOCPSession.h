@@ -30,7 +30,7 @@ public:
 
 	WSABUF wsaBuf();
 	char * data();
-	bool setData();// TODO :: buf
+	bool setData(Stream & stream);// TODO :: buf
 	LPWSAOVERLAPPED overlapped();
 };
 
@@ -54,7 +54,7 @@ public:
 	IOCPSession();
 
 	void onSend(size_t size);
-	void sendPacket(/*TODO : Packet *  */);
-	/*Package * onRecv(size_t size)*/ // TODO ::
+	void sendPacket(Packet * packet);
+	Package * onRecv(size_t size);
 	void reccvStandBy();
 };

@@ -65,6 +65,14 @@ using namespace tbb;
 #include"Util\Clock.h"
 #include"Util\Thread.h"
 
+#include"Util\Stream.h"
+
+#include"Network\Session\PacketHeader.h"
+#include"Network\Session\Packet.h"
+#include"Network\Session\PacketAnalyzer.h"
+#include"Network\Session\PacketFactory.h"
+#include"Network\Session\Package.h"
+
 
 #include"Network\Contents\ContentsProcess.h"
 #include"Network\Session\SessionManager.h"
