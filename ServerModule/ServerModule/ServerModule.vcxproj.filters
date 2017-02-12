@@ -146,5 +146,14 @@
     <ClCompile Include="Util\Log.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Json\lib_json\json_reader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Json\lib_json\json_value.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Json\lib_json\json_writer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

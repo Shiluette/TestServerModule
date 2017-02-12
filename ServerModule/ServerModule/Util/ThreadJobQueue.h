@@ -18,8 +18,8 @@ private:
 public:
 	ThreadJobQueue(WCHAR * name) : _lock(name)
 	{
-		_writeQueue = _queue[WRITE_QUEUE];
-		_readQueue = _queue[READ_QUEUE];
+		_writeQueue = &_queue[WRITE_QUEUE];
+		_readQueue = &_queue[READ_QUEUE];
 	}
 	~ThreadJobQueue()
 	{

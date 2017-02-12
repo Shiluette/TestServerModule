@@ -32,9 +32,9 @@ class LogFile : public BaseLog
 	wstr_t _fileName;
 public:
 	LogFile();
-	virtual ~LogFile();
+	//virtual ~LogFile();
 
 	void initialize() {}
-	void initialize(WCHAR * logFileName);
-	void log(WCHAR * logStr);
+	//void initialize(WCHAR * logFileName);
+	//void log(WCHAR * logStr);
 };

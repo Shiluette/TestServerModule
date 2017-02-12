@@ -76,14 +76,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>C:\tbb2017_20161128oss\lib\intel64\vc14;$(LibraryPath)</LibraryPath>
-    <IncludePath>$(IncludePath);$(ProjectDir)</IncludePath>
+    <IncludePath>$(IncludePath);$(ProjectDir);D:\프로젝트 관리 폴더\TestServerModule\ServerModule\ServerModule\Json</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(IncludePath);$(ProjectDir)</IncludePath>
+    <IncludePath>$(IncludePath);$(ProjectDir);D:\프로젝트 관리 폴더\TestServerModule\ServerModule\ServerModule\Json</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -183,6 +183,18 @@
     <ClInclude Include="Util\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Json\lib_json\json_reader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Json\lib_json\json_value.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Json\lib_json\json_writer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Network\Contents\ContentsProcess.cpp" />
     <ClCompile Include="Network\Server\IOCPServer.cpp" />
     <ClCompile Include="Network\Session\IOCPSession.cpp" />
