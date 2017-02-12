@@ -167,6 +167,7 @@
     <ClInclude Include="Network\Session\SessionManager.h" />
     <ClInclude Include="Shutdown.h" />
     <ClInclude Include="Util\Clock.h" />
+    <ClInclude Include="Util\Config.h" />
     <ClInclude Include="Util\Lock.h" />
     <ClInclude Include="Network\Server\IOCPServer.h" />
     <ClInclude Include="Network\Server\Server.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="Network\Session\SessionManager.cpp" />
     <ClCompile Include="Shutdown.cpp" />
     <ClCompile Include="Util\Clock.cpp" />
+    <ClCompile Include="Util\Config.cpp" />
     <ClCompile Include="Util\Lock.cpp" />
     <ClCompile Include="Network\Server\Server.cpp" />
     <ClCompile Include="ServerModule.cpp" />

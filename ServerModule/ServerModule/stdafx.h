@@ -65,12 +65,18 @@ using namespace tbb;
 #include"Shutdown.h"
 #include"Util\Type.h"
 #include"Util\Util.h"
+
 #include"Util\Singleton.h"
+
+#include"Util\Clock.h"
+#include"Util\Log.h"
+
+#include"Util\Thread.h"
 #include"Util\Lock.h"
 #include"Util\ThreadJobQueue.h"
 
-#include"Util\Clock.h"
-#include"Util\Thread.h"
+#include"Util\Config.h"
+
 
 #include"Util\Stream.h"
 
