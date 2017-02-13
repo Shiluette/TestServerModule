@@ -1,3 +1,4 @@
-﻿  Log.cpp
+﻿  Config.cpp
+d:\프로젝트 관리 폴더\testservermodule\servermodule\servermodule\util\config.cpp(13): warning C4244: '초기화 중': 'std::streamoff'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   ServerModule.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\ServerModule\x64\Debug\ServerModule.exe
   ServerModule.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\ServerModule\x64\Debug\ServerModule.pdb (Full PDB)

@@ -70,6 +70,7 @@ using namespace tbb;
 
 #include"Util\Clock.h"
 #include"Util\Log.h"
+#include"util\Assert.h"
 
 #include"Util\Thread.h"
 #include"Util\Lock.h"
@@ -77,6 +78,7 @@ using namespace tbb;
 
 #include"Util\Config.h"
 
+#include"Util\Minidump.h"
 
 #include"Util\Stream.h"
 

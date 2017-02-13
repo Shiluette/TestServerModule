@@ -5,7 +5,8 @@
 #include"Type.h"
 
 
-//#define SLog(arg, ...)
+#define SLog(arg, ...)		SystemLog::getInstance().log(arg, __VA_ARGS__);
+#define SErrLog(arg, ...)	SystemLog::getInstance().log(arg, __VA_ARGS__); ::ExitProcess(0);
 
 
 class BaseLog

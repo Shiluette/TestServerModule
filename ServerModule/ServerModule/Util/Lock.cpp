@@ -67,7 +67,7 @@ LockManager::LockManager()
 Lock * LockManager::SearchLockCycle(Lock * newLock)
 {
 	// thread : 현재 사용하고있는 스레드
-	Thread *thread = ThreadManager::getInstance().at(_HashId(GET_CURRENT_THREAD_ID));
+	Thread *thread = ThreadManager::getInstance().at(_HashId(std::this_thread::get_id()));
 	if (!thread) {
 		return nullptr;
 	}
@@ -124,7 +124,7 @@ LockSafe::LockSafe(Lock * lock, LPCWSTR fileName, int lineNo)
 		// TODO : 데드락 상황. 에러 표시 필요.
 	}
 	_lock->lock(fileName, lineNo);
-	_lock->SetThreadId(LockManager::getInstance()._HashId(GET_CURRENT_THREAD_ID));
+	_lock->SetThreadId(LockManager::getInstance()._HashId(std::this_thread::get_id()));
 }
 
 LockSafe::~LockSafe()

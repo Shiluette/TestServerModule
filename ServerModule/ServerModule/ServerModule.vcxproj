@@ -166,6 +166,7 @@
     <ClInclude Include="Network\Session\Session.h" />
     <ClInclude Include="Network\Session\SessionManager.h" />
     <ClInclude Include="Shutdown.h" />
+    <ClInclude Include="Util\Assert.h" />
     <ClInclude Include="Util\Clock.h" />
     <ClInclude Include="Util\Config.h" />
     <ClInclude Include="Util\Lock.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Util\Log.h" />
     <ClInclude Include="Util\Metrix.h" />
+    <ClInclude Include="Util\Minidump.h" />
     <ClInclude Include="Util\Singleton.h" />
     <ClInclude Include="Util\Stream.h" />
     <ClInclude Include="Util\Thread.h" />
@@ -203,6 +205,7 @@
     <ClCompile Include="Network\Session\Session.cpp" />
     <ClCompile Include="Network\Session\SessionManager.cpp" />
     <ClCompile Include="Shutdown.cpp" />
+    <ClCompile Include="Util\Assert.cpp" />
     <ClCompile Include="Util\Clock.cpp" />
     <ClCompile Include="Util\Config.cpp" />
     <ClCompile Include="Util\Lock.cpp" />
@@ -216,6 +219,7 @@
     </ClCompile>
     <ClCompile Include="Util\Log.cpp" />
     <ClCompile Include="Util\Metrix.cpp" />
+    <ClCompile Include="Util\Minidump.cpp" />
     <ClCompile Include="Util\Stream.cpp" />
     <ClCompile Include="Util\Thread.cpp" />
     <ClCompile Include="Util\Vector2D.cpp" />

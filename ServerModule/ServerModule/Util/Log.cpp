@@ -29,6 +29,22 @@ LogFile::LogFile(jsonValue_t * config)
 	this->initialize(path.data());
 }
 
+LogFile::~LogFile()
+{
+	_file.close();
+	_file.clear();
+
+	size_t found = _fileName.find(L".log");
+	if (found == wstr_t::npos) {
+		return;
+	}
+
+	wstr_t closeFilename = _fileName.substr(0, found);
+	closeFilename += CLOCK.nowTime(L"_%Y%m%d-%H%M%S.log");
+	// LogFile name 변경 함수
+	_wrename(_fileName.c_str(), closeFilename.c_str());
+}
+
 void LogFile::initialize(WCHAR * logFileName)
 {
 	_fileName = logFileName;
@@ -37,6 +53,13 @@ void LogFile::initialize(WCHAR * logFileName)
 		printf("! LogFile error .... file open Failed.\n");
 		// TODO : 
 	}
+}
+
+void LogFile::log(WCHAR * logStr)
+{
+	printf("%ws1", logStr);
+	_file << logStr;
+	_file.flush();
 }
 
 SystemLog::SystemLog()
