@@ -81,6 +81,8 @@ using namespace tbb;
 #include"Util\Config.h"
 
 #include"Util\Minidump.h"
+#include"Util\Gameobject.h"
+#include"Util\Task.h"
 
 #include"Util\Stream.h"
 

@@ -64,7 +64,7 @@ bool IoData::setData(Stream & stream)
 	this->clear();
 
 	if (_buffer.max_size() <= stream.size()) {
-		// TODO : 버퍼보다 큰 데이터를 보낼려고 함. log 메시지 출력
+		SLog(L"!! Packet size very big. this size [%d] byte !!", stream.size());
 		return false;
 	}
 	packet_size_t offset = 0;
@@ -96,7 +96,6 @@ LPWSAOVERLAPPED IoData::overlapped()
 
 bool IoData::lackIOBuf(size_t size)
 {
-	// TODO ::
 	_currentBytes += size;
 	if (_currentBytes < _totalBytes) {
 		return true;
@@ -114,7 +113,7 @@ void IOCPSession::initialize()
 void IOCPSession::checkErrorIo(DWORD ret)
 {
 	if (ret == SOCKET_ERROR && (WSAGetLastError() != ERROR_IO_PENDING)) {
-		// TODO :: Log 작성  "SOCKET err : getLasterror()
+		SLog(L"!! socket error : %d ", WSAGetLastError());
 	}
 }
 
@@ -186,7 +185,7 @@ Package * IOCPSession::onRecv(size_t size)
 
 	Packet *packet = PacketAnalyzer::getInstance().analyzer((const char*)packetData, packetdataSize);
 	if (packet == nullptr) {
-		// TODO : long 출력
+		SLog(L"!! Not regist packet Type!!");
 		this->onClose();
 		return nullptr;
 	}

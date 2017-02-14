@@ -1,12 +1,22 @@
 #include"stdafx.h"
 #include"ContentsProcess.h"
 
-#define PROCESSCOUNT 4
-void ContentsProcess::initalize()
+void ContentsProcess::initalize(jsonValue_t * config)
 {
-	// TODO : Contents에 맞는 스레드 생성
+	jsonValue_t contents = (*config)["Contents"];
+	if (contents == NULL) {
+		SErrLog(L"** not exist process setting **");
+		return;
+	}
+	int processCount = contents.get("ThreadCount", 0).asInt();
+	if (processCount == 0) {
+		SLog(L" ** not to do this Thread create, input zero count **");
+		return;
+	}
+
+
 	_packageQueue = new ThreadJobQueue<Package *>(L"ContentsProcessQueue");
-	for (auto i = 0; i < PROCESSCOUNT; ++i) {
+	for (auto i = 0; i < processCount; ++i) {
 		_threadPool[i] = MAKE_THREAD(ContentsProcess, process);
 	}
 
@@ -23,9 +33,12 @@ void ContentsProcess::run(Package * package)
 	PacketType type = package->_packet->type();
 	Runfunc runFunction = _runFuncTable.at(type);
 	if (runFunction == nullptr) {
-		// TODO : Log 출력 필요
+		SLog(L"!! invalid Packet inputted... type[%d]", type);
+		package->_session->onClose();
+		return;
 		// 1. 업데이트 되지 않은 타입이거나, 패킷의 조작의심
 	}
+	SLog(L"*** [%d] packet run ***", type);
 	runFunction(package->_session, package->_packet);
 }
 
@@ -49,9 +62,11 @@ void ContentsProcess::process()
 
 ContentsProcess::ContentsProcess()
 {
-	// TODO : Config 클래스 제작시 Json을 이용하여... 음
-	// Json을 이용하여 할 필요가 있을까나...
-	this->initalize();
+	jsonValue_t config;
+	if (!loadConfig(&config)) {
+		return;
+	}
+	this->initalize(&config);
 }
 
 ContentsProcess::~ContentsProcess()

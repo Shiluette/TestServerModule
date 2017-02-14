@@ -43,7 +43,6 @@ bool Session::onAccept(SOCKET socket, SOCKADDR_IN addrinfo)
 
 void Session::onClose()
 {
-	// TODO: 세션을 닫기 위한 기능이 필요
 	SessionManager::getInstance().closeSession(this);
 }
 

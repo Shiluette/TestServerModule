@@ -96,12 +96,14 @@ DWORD WINAPI IOCPServer::workerThread(LPVOID serverPtr)
 
 			session->onSend((size_t)transfersize);
 			continue;
-		case IO_READ:
-			Package *package = session->onRecv((size_t)transfersize);					
+		case IO_READ: 
+		{
+			Package *package = session->onRecv((size_t)transfersize);
 			if (package != nullptr) {
 				server->putPackage(package);
 			}
-				continue;
+		}
+			continue;
 		case IO_ERROR:
 
 			SessionManager::getInstance().closeSession(session);
@@ -179,6 +181,14 @@ void IOCPServer::onAceept(SOCKET accepter, SOCKADDR_IN addressinfo)
 		SAFE_DELETE(session);
 		return;
 	}
+	session->_ioData[IO_READ].clear();
 
+	HANDLE handle = CreateIoCompletionPort((HANDLE)accepter, this->iocp(), (ULONG_PTR)&(*session), NULL);
+	if (!handle) {
+		SAFE_DELETE(session);
+		return;
+	}
 
+	SLog(L" ** Client accept who's [%S]", session->clientAddress().c_str());
+	session->recvStandBy();
 }

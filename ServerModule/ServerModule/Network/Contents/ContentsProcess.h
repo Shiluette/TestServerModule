@@ -15,7 +15,7 @@ protected:
 	std::unordered_map<PacketType, Runfunc> _runFuncTable;
 
 private:
-	void initalize();
+	void initalize(jsonValue_t * config);
 	void registDefaultPacketFunc();
 	void run(Package * package);
 	void execute();

@@ -170,6 +170,7 @@
     <ClInclude Include="Util\Assert.h" />
     <ClInclude Include="Util\Clock.h" />
     <ClInclude Include="Util\Config.h" />
+    <ClInclude Include="Util\Gameobject.h" />
     <ClInclude Include="Util\Lock.h" />
     <ClInclude Include="Network\Server\IOCPServer.h" />
     <ClInclude Include="Network\Server\Server.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Util\Minidump.h" />
     <ClInclude Include="Util\Singleton.h" />
     <ClInclude Include="Util\Stream.h" />
+    <ClInclude Include="Util\Task.h" />
     <ClInclude Include="Util\Thread.h" />
     <ClInclude Include="Util\ThreadJobQueue.h" />
     <ClInclude Include="Util\Type.h" />
@@ -222,6 +224,7 @@
     <ClCompile Include="Util\Metrix.cpp" />
     <ClCompile Include="Util\Minidump.cpp" />
     <ClCompile Include="Util\Stream.cpp" />
+    <ClCompile Include="Util\Task.cpp" />
     <ClCompile Include="Util\Thread.cpp" />
     <ClCompile Include="Util\Vector2D.cpp" />
   </ItemGroup>

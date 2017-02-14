@@ -36,6 +36,7 @@ bool SessionManager::addSession(Session * session)
 	auto findSession = find(_sessionList.begin(), _sessionList.end(), session);
 	if (findSession != _sessionList.end()) return false;
 	if (_sessionCount > _MaxConnection) {
+		SLog(L"!! SessionCount over !!");
 		// TODO : 적정 사용자 인원 초과 추후 대응 필요.
 		// (room Server의 경우)다른 서버로 연결을 우회하게끔 패킷을 보낸다던가...
 		return false;
@@ -68,7 +69,10 @@ bool SessionManager::closeSession(Session * session)
 		// 3. 객체를 삭제.
 		// TODO : 객체를 지우기전에 유저 정보 최신 업데이트가 필요.
 		Session * deleteSession = *findSession;
+		SLog(L"** close by client session [%S]", deleteSession->clientAddress().c_str())
 		::closesocket(deleteSession->getSocket());
+
+
 		_sessionList.remove(deleteSession);
 		--_sessionCount;
 		SAFE_DELETE(deleteSession);

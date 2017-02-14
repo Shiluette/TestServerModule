@@ -23,7 +23,11 @@ Server::~Server()
 
 void Server::Initialize(jsonValue_t * config)
 {
+	// 테스크 설정
+	TaskManager::getInstance();
+	
 	// 서버 설정
+	
 	jsonValue_t Vserver = (*config)["Server"];
 	strcpy_s(_ip, Vserver.get("IP", "").asString().c_str());
 	_port = Vserver.get("PORT", 0).asInt();

@@ -13,6 +13,7 @@ protected:
 	SOCKET_DATA _socketData;
 	oid_t _id;
 	int8_t _type;
+
 	bool setsocketOption();
 	tick_t _lastHeartBeat; // 클라이언트와 신호가 일정 시간 이하로 없을 경우 확인용
 
