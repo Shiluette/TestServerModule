@@ -3,12 +3,14 @@
 #include"Server.h"
 //Iocp 서버 클래스.
 
+#define MAXIMUM_IOCP_THREAD		SIZE_32
+
 class IOCPServer : public Server, public Singleton<IOCPServer>
 {
 	SOCKET _listenSocket;
 	HANDLE _giocp;
 	Thread * _acceptThread;
-	array<Thread *, SIZE_64> _workerThread;
+	array<Thread *, SIZE_32> _workerThread;
 private:
 	bool createListenSocket();
 
@@ -22,5 +24,5 @@ public:
 	SOCKET listenSocekt();
 	HANDLE iocp();
 
-	void onAceept(SOCKET accepter, SOCKADDR_IN addrInfo);
+	void onAceept(SOCKET accepter, SOCKADDR_IN addressinfo);
 };

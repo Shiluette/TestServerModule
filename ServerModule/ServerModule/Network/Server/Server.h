@@ -10,8 +10,8 @@ typedef enum SERVERSTATE {
 class Server{
 protected:
 	char _ip[16];
-	DWORD _port;
-	DWORD _workerTheadCount;
+	int _port;
+	int _workerThreadCount;
 
 	SERVERSTATE _state;
 	ContentsProcess * _contentsprocess;
@@ -19,8 +19,9 @@ public:
 	Server(ContentsProcess * contentsprocess);
 	virtual ~Server();
 
-	virtual void Initialize();
+	virtual void Initialize(jsonValue_t * config);
 	virtual bool Run() = 0; // 순수 가상함수
 	SERVERSTATE & states(); 
+	void putPackage(Package * package);
 
 };

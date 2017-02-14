@@ -48,6 +48,8 @@ ThreadManager::~ThreadManager()
 void ThreadManager::put(Thread * thread)
 {
 	_threadPool.emplace(thread->GetId(), thread);  // ThreadManager등록 2
+	SLog(L"** create thread: id[0x%x] || name[%s], pool size[%d]", 
+		thread->GetId(), thread->GetName().c_str(), _threadPool.size());
 }
 
 void ThreadManager::remove(size_t id)
@@ -56,7 +58,7 @@ void ThreadManager::remove(size_t id)
 	if (iter == _threadPool.end()) {
 		return;
 	}
-	//auto thread = iter->second;
+	auto thread = iter->second;
 	_threadPool.erase(iter);  // ThreadManager 삭제 1
 }
 

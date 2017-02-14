@@ -6,7 +6,7 @@ bool ReadFromFile(const char * file, str_t & readBuffer)
 {
 	ifstream _file(file);
 	if (!_file.is_open()) {
-		// TODO : 경로 문제 Log
+		printf("! File err.have not Config file\n");
 		return false;
 	}
 	_file.seekg(0, ios::end);
@@ -26,6 +26,7 @@ bool loadConfig(jsonValue_t * root)
 	}
 	jsonReader_t reader;
 	if (!reader.parse(readBuffer, *root)) {
+		printf("!! Json Parse Err. !!\n");
 		return false;
 	}
 	return true;

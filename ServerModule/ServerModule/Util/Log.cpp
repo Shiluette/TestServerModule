@@ -51,7 +51,7 @@ void LogFile::initialize(WCHAR * logFileName)
 	_file.open(logFileName, std::ios::out | std::ios::trunc);
 	if (_file.bad()) {
 		printf("! LogFile error .... file open Failed.\n");
-		// TODO : 
+		assert(false);
 	}
 }
 

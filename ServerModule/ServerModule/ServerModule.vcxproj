@@ -165,6 +165,7 @@
     <ClInclude Include="Network\Session\PacketHeader.h" />
     <ClInclude Include="Network\Session\Session.h" />
     <ClInclude Include="Network\Session\SessionManager.h" />
+    <ClInclude Include="Network\Winsocket.h" />
     <ClInclude Include="Shutdown.h" />
     <ClInclude Include="Util\Assert.h" />
     <ClInclude Include="Util\Clock.h" />

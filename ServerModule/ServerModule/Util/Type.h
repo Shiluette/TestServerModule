@@ -18,6 +18,8 @@ typedef INT64 Int64;
 
 enum {
 	SIZE_8 = 8,
+	SIZE_16 = 16,
+	SIZE_32 = 32,
 	SIZE_64 = 64,
 	SIZE_128 = 128,
 	SIZE_256 = 256,
