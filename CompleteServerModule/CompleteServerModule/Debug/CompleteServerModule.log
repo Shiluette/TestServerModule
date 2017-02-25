@@ -1,0 +1,27 @@
+﻿  stdafx.cpp
+c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(1544): warning C4091: 'typedef ': 변수를 선언하지 않으면 '' 왼쪽은 무시됩니다.
+c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(3190): warning C4091: 'typedef ': 변수를 선언하지 않으면 '' 왼쪽은 무시됩니다.
+d:\프로젝트 관리 폴더\testservermodule\completeservermodule\completeservermodule\network\server\server.h(9): warning C4091: 'typedef ': 변수를 선언하지 않으면 'SERVERSTATE' 왼쪽은 무시됩니다.
+d:\프로젝트 관리 폴더\testservermodule\completeservermodule\completeservermodule\util\metrix.h(39): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
+  ContentsProcess.cpp
+  IOCPServer.cpp
+  Server.cpp
+  IOCPSession.cpp
+  PacketAnalyzer.cpp
+  Session.cpp
+  SessionManager.cpp
+  Shutdown.cpp
+d:\프로젝트 관리 폴더\testservermodule\completeservermodule\completeservermodule\network\session\iocpsession.cpp(76): warning C4838: 'unsigned int'에서 'packet_size_t'(으)로의 변환에는 축소 변환이 필요합니다. (소스 파일 컴파일 중 Network\Session\IOCPSession.cpp)
+  Assert.cpp
+  Clock.cpp
+  Config.cpp
+  Lock.cpp
+  Log.cpp
+d:\프로젝트 관리 폴더\testservermodule\completeservermodule\completeservermodule\util\config.cpp(13): warning C4244: '초기화 중': 'std::streamoff'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다. (소스 파일 컴파일 중 Util\Config.cpp)
+  Metrix.cpp
+  Minidump.cpp
+  Stream.cpp
+  Task.cpp
+  Thread.cpp
+  Vector2D.cpp
+  CompleteServerModule.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\Debug\CompleteServerModule.lib

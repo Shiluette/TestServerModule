@@ -1,0 +1,13 @@
+D2017-02-18T16:17:13.979	System : 0x949AEBA6	** create thread: id[0xf959d6fb] || name[TaskManager], pool size[1]
+D2017-02-18T16:17:13.041	System : 0x949AEBA6	** worker thread count : 8
+D2017-02-18T16:17:13.084	System : 0x949AEBA6	### RoomServer Server Start~! ###
+D2017-02-18T16:17:14.295	System : 0x949AEBA6	** Server Listen socket created . IP : 127.0.0.1 , Prot : 9100 
+D2017-02-18T16:17:14.338	System : 0x949AEBA6	** create thread: id[0xf22a29b2] || name[IOCPServer], pool size[2]
+D2017-02-18T16:17:14.379	System : 0x949AEBA6	** create thread: id[0xb6f8a8a5] || name[IOCPServer], pool size[3]
+D2017-02-18T16:17:14.426	System : 0x949AEBA6	** create thread: id[0x62e8dd5e] || name[IOCPServer], pool size[4]
+D2017-02-18T16:17:14.473	System : 0x949AEBA6	** create thread: id[0x784ec2fd] || name[IOCPServer], pool size[5]
+D2017-02-18T16:17:14.521	System : 0x949AEBA6	** create thread: id[0x7f5ea802] || name[IOCPServer], pool size[6]
+D2017-02-18T16:17:14.570	System : 0x949AEBA6	** create thread: id[0x72603ffb] || name[IOCPServer], pool size[7]
+D2017-02-18T16:17:14.617	System : 0x949AEBA6	** create thread: id[0x69dac6e4] || name[IOCPServer], pool size[8]
+D2017-02-18T16:17:14.662	System : 0x949AEBA6	** create thread: id[0x1fd538fc] || name[IOCPServer], pool size[9]
+D2017-02-18T16:17:14.706	System : 0x949AEBA6	** create thread: id[0x233cff89] || name[IOCPServer], pool size[10]

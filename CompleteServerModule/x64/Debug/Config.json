@@ -1,0 +1,16 @@
+{
+	"Name" : "RoomServer",
+   "Server" : {
+   "IP" : "127.0.0.1",
+   "PORT" : 9100,
+   "ThreadCount" : 8
+   },
+   "Contests" : {
+      "ThreadCount" : 4
+   },
+   "Log" : {
+	"Path" : "RoomLog.log",
+	"Prefix" : "System",
+	"Type" : "WithFile"
+   }
+}

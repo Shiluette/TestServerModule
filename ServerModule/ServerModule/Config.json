@@ -1,11 +1,15 @@
 {
-   "Network" : {
+   "Server" : {
    "IP" : "192.168.0.1",
-   "PORT" : 9000
+   "PORT" : 9100,
+   "ThreadCount" : 8
    },
-   "indent" : {
-      "length" : 3,
-      "use_space" : true
+   "Contests" : {
+      "ThreadCount" : 4
    },
-   "plug-ins" : [ "python", "c++", "ruby" ]
+   "Log" : {
+	"Path" : "\\Log\\RoomLog.log",
+	"Prefix" : "System",
+	"Type" : "WithFile"
+   }
 }
