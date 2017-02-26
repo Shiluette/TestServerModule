@@ -36,6 +36,7 @@ public:
 	void operator << (const UINT32 &value);
 	void operator << (const INT64 &value);
 	void operator << (const UINT64 &value);
+	void operator << (const float &value);
 
 
 	template<class T>
@@ -62,6 +63,7 @@ public:
 	void operator >> (UINT32*retval);
 	void operator >> (INT64  *retval);
 	void operator >> (UINT64 *retval);
+	void operator >> (float *retval);
 
 
 	template<class T>

@@ -7,8 +7,8 @@
 
 int main()
 {
-	IOCPServer * server = new IOCPServer(nullptr);
-	server->run();
+	/*IOCPServer * server = new IOCPServer(nullptr);
+	server->run();*/
     return 0;
 }
 

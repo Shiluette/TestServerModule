@@ -1,2 +1,7 @@
-﻿  RoomServer.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RoomServer.exe
+﻿  stdafx.cpp
+  RoomServer.cpp
+c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(1544): warning C4091: 'typedef ': 변수를 선언하지 않으면 '' 왼쪽은 무시됩니다.
+c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(3190): warning C4091: 'typedef ': 변수를 선언하지 않으면 '' 왼쪽은 무시됩니다.
+d:\프로젝트 관리 폴더\testservermodule\completeservermodule\completeservermodule\network\server\server.h(9): warning C4091: 'typedef ': 변수를 선언하지 않으면 'SERVERSTATE' 왼쪽은 무시됩니다.
+  RoomServer.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RoomServer.exe
   RoomServer.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RoomServer.pdb (Full PDB)

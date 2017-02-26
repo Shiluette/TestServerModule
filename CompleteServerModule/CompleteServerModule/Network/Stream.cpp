@@ -109,6 +109,10 @@ void Stream::operator<<(const UINT64 & value)
 {
 	STREAM_WRITE(value);
 }
+void Stream::operator<<(const float & value)
+{
+	STREAM_WRITE(value);
+}
 template<class T>
 void Stream::operator<<(const std::vector<T>& value)
 {
@@ -211,6 +215,11 @@ void Stream::operator >> (INT64 * retval)
 void Stream::operator >> (UINT64 * retval)
 {
 	STREAM_READ(UINT64, retval);
+}
+
+void Stream::operator >> (float * retval)
+{
+	STREAM_READ(FLOAT, retval);
 }
 
 template<class T>

@@ -53,6 +53,7 @@ public:
 			case PE_S_BRD_OUTGAMESTATE:		return new PK_S_BRD_OUTGAMESTATE();
 			case PE_S_BRD_ROOMSTATE:		return new PK_S_BRD_ROOMSTATE();
 			case PE_S_NTF_OVERLAPCRUSH:		return new PK_S_NTF_OVERLAPCRUSH();
+			case PE_S_ANS_SELECTPARTSUCC:	return new PK_S_ANS_SELECTPARTSUCC();
 		}
 		return nullptr;
 	}

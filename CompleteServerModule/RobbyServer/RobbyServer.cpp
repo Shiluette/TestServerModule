@@ -2,11 +2,13 @@
 //
 
 #include "stdafx.h"
-#include"ServerHeader.h"
+#include"serverHeader.h"
 
 
 int main()
 {
-    return 0;
+	IOCPServer * server = new IOCPServer(nullptr);
+	server->run();
+	return 0;
 }
 

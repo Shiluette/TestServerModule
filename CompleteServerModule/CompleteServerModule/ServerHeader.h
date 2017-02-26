@@ -39,6 +39,7 @@
 #include<string>
 #include<tchar.h>
 #include<typeinfo>
+//#include<inttypes.h>
 
 #if _DEBUG
 #define CONTEXT_SWITCH  Sleep(1)
@@ -93,3 +94,6 @@ using namespace std;
 #include"Util\Metrix.h"
 
 
+#include"Database\ODBCDatabase.h"
+#include"Database\Query.h"
+#include"Database\DBManager.h"

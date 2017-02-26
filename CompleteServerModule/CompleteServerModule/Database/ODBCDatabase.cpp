@@ -75,7 +75,7 @@ bool ODBCDatabase::connect()
 	return true;;
 }
 
-bool ODBCDatabase::connect(const wchar_t * drive, const wchar_t * server, const wchar_t dataBase, const wchar_t uid, const wchar_t * pw)
+bool ODBCDatabase::connect(const wchar_t * drive, const wchar_t * server, const wchar_t * dataBase, const wchar_t * uid, const wchar_t * pw)
 {
 	// Drive : 현재 로컬 컴퓨터에 설치된 서버 혹은 클라이언트 트라이버명을 저확하게 명시한다.
 	// Server : 서버의 TNS 이름을 "IP"형식으로 명시한다.

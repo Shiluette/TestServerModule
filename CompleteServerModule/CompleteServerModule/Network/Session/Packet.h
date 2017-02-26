@@ -17,16 +17,16 @@ class PK_C_REQ_ATT : public Packet
 public:
 	PacketType type() {return PE_C_REQ_ATT;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+		//stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+		//stream >> &pos;
 	}
 
 };
@@ -90,16 +90,16 @@ class PK_C_REQ_GENEOFF : public Packet
 public:
 	PacketType type() {return PE_C_REQ_GENEOFF;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+		//stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+		//stream >> &pos;
 	}
 
 };
@@ -109,16 +109,16 @@ class PK_C_REQ_GENEON : public Packet
 public:
 	PacketType type() {return PE_C_REQ_GENEON;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+		//stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+		//stream >> &pos;
 	}
 
 };
@@ -188,16 +188,16 @@ class PK_C_REQ_OWNLOOK : public Packet
 public:
 	PacketType type() {return PE_C_REQ_OWNLOOK;}
 	Int64 uid;
-	std::vector<FLOAT> rotatep;
+	/*std::vector<FLOAT> rotatep;*/
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << rotatep;
+		/*stream << rotatep;*/
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &rotatep;
+		/*stream >> &rotatep;*/
 	}
 
 };
@@ -208,18 +208,18 @@ public:
 	PacketType type() {return PE_C_REQ_OWNMOVE;}
 	Int64 uid;
 	BYTE posallow;
-	std::vector<FLOAT> pos;
+	/*std::vector<FLOAT> pos;*/
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
 		stream << posallow;
-		stream << pos;
+		//stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
 		stream >> &posallow;
-		stream >> &pos;
+		//stream >> &pos;
 	}
 
 };
@@ -228,14 +228,14 @@ class PK_C_REQ_SEARCHROOM : public Packet
 {
 public:
 	PacketType type() {return PE_C_REQ_SEARCHROOM;}
-	Int64 oid;
+	Int64 uid;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
-		stream << oid;
+		stream << uid;
 	}
 
 	void decode(Stream &stream) {
-		stream >> &oid;
+		stream >> &uid;
 	}
 
 };
@@ -244,17 +244,17 @@ class PK_C_REQ_SELECTPART : public Packet
 {
 public:
 	PacketType type() {return PE_C_REQ_SELECTPART;}
-	Int64 oid;
+	Int64 uid;
 	BYTE  role;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
-		stream << oid;
-		stream <<  role;
+		stream << uid;
+		stream << role;
 	}
 
 	void decode(Stream &stream) {
-		stream >> &oid;
-		stream >> & role;
+		stream >> &uid;
+		stream >> &role;
 	}
 
 };
@@ -264,16 +264,16 @@ class PK_C_REQ_SITDOWN : public Packet
 public:
 	PacketType type() {return PE_C_REQ_SITDOWN;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+		//stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+		//stream >> &pos;
 	}
 
 };
@@ -283,16 +283,16 @@ class PK_C_REQ_STANDUP : public Packet
 public:
 	PacketType type() {return PE_C_REQ_STANDUP;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+	//	stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+	//	stream >> &pos;
 	}
 
 };
@@ -302,16 +302,16 @@ class PK_C_REQ_TRAPON : public Packet
 public:
 	PacketType type() {return PE_C_REQ_TRAPON;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+		//stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+		//stream >> &pos;
 	}
 
 };
@@ -321,16 +321,16 @@ class PK_C_REQ_WALKOFF : public Packet
 public:
 	PacketType type() {return PE_C_REQ_WALKOFF;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+		//stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+		//stream >> &pos;
 	}
 
 };
@@ -340,16 +340,16 @@ class PK_C_REQ_WALKON : public Packet
 public:
 	PacketType type() {return PE_C_REQ_WALKON;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+	//	stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+	//	stream >> &pos;
 	}
 
 };
@@ -359,21 +359,35 @@ class PK_S_ANS_ADDUSERVIEW : public Packet
 public:
 	PacketType type() {return PE_S_ANS_ADDUSERVIEW;}
 	BYTE ucount;
-	std::vector<Int64> uid;
-	std::vector<FLOAT> pos;
+	//std::vector<Int64> uid;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << ucount;
-		stream << uid;
-		stream << pos;
+	//	stream << uid;
+	//	stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &ucount;
-		stream >> &uid;
-		stream >> &pos;
+	//	stream >> &uid;
+	//	stream >> &pos;
 	}
 
+};
+class PK_S_ANS_SELECTPARTSUCC : public Packet
+{
+public:
+	PacketType type() { return PE_S_ANS_SELECTPARTSUCC; }
+	BYTE role;
+	void encode(Stream &stream) {
+		stream << (Int64)this->type();
+		stream << role;
+	}
+
+	void decode(Stream &stream) {
+		stream >> &role;
+	}
 };
 
 class PK_S_ANS_ALIVEUSERSTATEUPDATE : public Packet
@@ -425,25 +439,25 @@ class PK_S_ANS_ENTERROOMSUCC : public Packet
 public:
 	PacketType type() {return PE_S_ANS_ENTERROOMSUCC;}
 	BYTE ucount;
-	std::vector<Int64> uid;
-	std::vector<BYTE> idlength;
-	std::vector<wstr_t> id;
-	std::vector<BYTE> role;
+	//std::vector<Int64> uid;
+	//std::vector<BYTE> idlength;
+	//std::vector<wstr_t> id;
+	//std::vector<BYTE> role;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << ucount;
-		stream << uid;
-		stream << idlength;
-		stream << id;
-		stream << role;
+	//	stream << uid;
+	//	stream << idlength;
+	//	stream << id;
+	//	stream << role;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &ucount;
-		stream >> &uid;
-		stream >> &idlength;
-		stream >> &id;
-		stream >> &role;
+	//	stream >> &uid;
+	//	stream >> &idlength;
+	//	stream >> &id;
+	//	stream >> &role;
 	}
 
 };
@@ -571,19 +585,19 @@ class PK_S_ANS_SUBUSERVIEW : public Packet
 public:
 	PacketType type() {return PE_S_ANS_SUBUSERVIEW;}
 	BYTE ucount;
-	std::vector<Int64> uid;
-	std::vector<FLOAT> pos;
+	//std::vector<Int64> uid;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << ucount;
-		stream << uid;
-		stream << pos;
+	//	stream << uid;
+	//	stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &ucount;
-		stream >> &uid;
-		stream >> &pos;
+	//	stream >> &uid;
+	//	stream >> &pos;
 	}
 
 };
@@ -609,16 +623,16 @@ class PK_S_ANS_TRAPBUILDSUCC : public Packet
 public:
 	PacketType type() {return PE_S_ANS_TRAPBUILDSUCC;}
 	Int64 uid;
-	std::vector<FLOAT> trappos;
+	//std::vector<FLOAT> trappos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << trappos;
+	//	stream << trappos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &trappos;
+	//	stream >> &trappos;
 	}
 
 };
@@ -647,16 +661,16 @@ class PK_S_ANS_USERMOVE : public Packet
 public:
 	PacketType type() {return PE_S_ANS_USERMOVE;}
 	Int64 uid;
-	std::vector<FLOAT> pos;
+	//std::vector<FLOAT> pos;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
-		stream << pos;
+	//	stream << pos;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
-		stream >> &pos;
+	//	stream >> &pos;
 	}
 
 };

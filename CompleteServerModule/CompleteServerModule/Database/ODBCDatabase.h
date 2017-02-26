@@ -47,7 +47,7 @@ public:
 	ODBCDatabase();
 	virtual ~ODBCDatabase();
 	virtual bool connect();
-	bool connect(const wchar_t * drive, const wchar_t * server, const wchar_t dataBase, const wchar_t uid, const wchar_t * pw);
+	bool connect(const wchar_t * drive, const wchar_t * server, const wchar_t * dataBase, const wchar_t * uid, const wchar_t * pw);
 	virtual bool connect(const wchar_t * dbName, const wchar_t * id, const wchar_t *pw);
 	virtual bool connected();
 	virtual bool disconnect();
