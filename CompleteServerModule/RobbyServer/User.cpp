@@ -12,12 +12,14 @@ User::User()
 
 User::~User()
 {
+	SLog(L"User Pointer Delete oid : [%I64u] , uid : [%I64d]", _oid, _uid);
 }
 
-void User::set(UINT64 oid, INT64 uid, USER_STATE state, USER_ROLE role, INT64 roomnumber)
+void User::set(UINT64 oid, INT64 uid, wstr_t id, USER_STATE state, USER_ROLE role, INT64 roomnumber)
 {
 	_oid = oid;
 	_uid = uid;
+	_id.assign(id.begin(), id.end());
 	_state = state;
 	_role = role;
 	_roomNumber = roomnumber;
@@ -26,7 +28,6 @@ void User::set(UINT64 oid, INT64 uid, USER_STATE state, USER_ROLE role, INT64 ro
 void User::enterRoom(int roomNumber)
 {
 	if (_state == STATE_ROOM || _state == STATE_GAMEING) {
-		SLog(L"");
 		SLog(L"!! Enter room error oid : [%I64u] , uid : [%I64d]", _oid, _uid);
 		return;
 	}
@@ -48,9 +49,10 @@ USER_ROLE User::setRole(USER_ROLE role)
 	return _role;
 }
 
-int User::role()
+USER_ROLE & User::role()
 {
-	switch (_role)
+	return _role;
+	/*switch (_role)
 	{
 	case ROLE_NONE:
 		return 0;
@@ -59,7 +61,7 @@ int User::role()
 	case ROLE_KILLER : 
 		return 1;
 	}
-	return 999;
+	return 999;*/
 }
 
 INT64 & User::roomNumber()
@@ -76,6 +78,11 @@ UINT64 & User::oid()
 INT64 & User::uid()
 {
 	return _uid;
+}
+
+wstr_t & User::id()
+{
+	return _id;
 }
 
 void User::clear()

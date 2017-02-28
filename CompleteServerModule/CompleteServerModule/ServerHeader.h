@@ -75,7 +75,7 @@ using namespace std;
 #include"Util\Gameobject.h"
 #include"Util\Task.h"
 
-#include"Network\Stream.h"
+#include"Network\Session\Stream.h"
 
 #include"Network\Session\PacketHeader.h"
 #include"Network\Session\Packet.h"

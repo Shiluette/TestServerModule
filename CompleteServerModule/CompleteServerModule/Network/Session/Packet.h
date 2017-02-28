@@ -1,7 +1,7 @@
 #pragma once
 #include"stdafx.h"
-#include "packetHeader.h"
-#include"../Stream.h"
+#include "PacketHeader.h"
+#include"Stream.h"
 
 
 class Packet {
@@ -439,25 +439,26 @@ class PK_S_ANS_ENTERROOMSUCC : public Packet
 public:
 	PacketType type() {return PE_S_ANS_ENTERROOMSUCC;}
 	BYTE ucount;
-	//std::vector<Int64> uid;
-	//std::vector<BYTE> idlength;
-	//std::vector<wstr_t> id;
-	//std::vector<BYTE> role;
+	Int64 uid[4];
+	wstr_t id[4];
+	BYTE role[4];
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << ucount;
-	//	stream << uid;
-	//	stream << idlength;
-	//	stream << id;
-	//	stream << role;
+		for (int cnt = 0; cnt < ucount; ++cnt) {
+			stream << uid[cnt];
+			stream << id[cnt];
+			stream << role[cnt];
+		}
 	}
 
 	void decode(Stream &stream) {
 		stream >> &ucount;
-	//	stream >> &uid;
-	//	stream >> &idlength;
-	//	stream >> &id;
-	//	stream >> &role;
+		for (int cnt = 0; cnt < ucount; ++cnt) {
+			stream >> &(uid[cnt]);
+			stream >> &(id[cnt]);
+			stream >> &(role[cnt]);
+		}
 	}
 
 };
@@ -735,15 +736,18 @@ public:
 	PacketType type() {return PE_S_BRD_ROOMSTATE;}
 	Int64 uid;
 	BYTE update;
+	wstr_t id;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
 		stream << update;
+		stream << id;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
 		stream >> &update;
+		stream >> &id;
 	}
 
 };
@@ -763,4 +767,8 @@ public:
 	}
 
 };
-
+class PK_S_NTF_ROOMSEARCHNOTROLE : public Packet
+{
+public:
+	PacketType type() { return PE_S_NTF_ROOMSEARCHNOTROLE; }
+};

@@ -6,13 +6,13 @@ class UserManager : public  Singleton<UserManager>
 {
 private:
 	std::array<User *, 2000> _userPool;
-	std::set<int> _login;
-	std::set<int> _logoutindex;
+	std::set<INT64> _login;
+	std::set<INT64> _logoutindex;
 	Lock _lock;
 public:
 	UserManager();
 	virtual ~UserManager();
-	INT64 login(UINT64 oid);
+	INT64 login(UINT64 & oid, wstr_t & id);
 	void logout(INT64 uid);
 	User * getUser(INT64  uid);
 };

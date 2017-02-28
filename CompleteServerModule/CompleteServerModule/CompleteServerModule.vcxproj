@@ -77,9 +77,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir);D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\CompleteServerModule\Json;$(IncludePath)</IncludePath>
+    <IntDir>$(Platform)\$(Configuration)\ to $(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectDir);D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\CompleteServerModule\Json;$(IncludePath)</IncludePath>
+    <IntDir>$(Platform)\$(Configuration)\ to $(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -176,7 +178,7 @@
     <ClInclude Include="Util\Metrix.h" />
     <ClInclude Include="Util\Minidump.h" />
     <ClInclude Include="Util\Singleton.h" />
-    <ClInclude Include="Network\Stream.h" />
+    <ClInclude Include="Network\Session\Stream.h" />
     <ClInclude Include="Util\Task.h" />
     <ClInclude Include="Util\Thread.h" />
     <ClInclude Include="Util\ThreadJobQueue.h" />
@@ -229,7 +231,7 @@
     <ClCompile Include="Util\Log.cpp" />
     <ClCompile Include="Util\Metrix.cpp" />
     <ClCompile Include="Util\Minidump.cpp" />
-    <ClCompile Include="Network\Stream.cpp" />
+    <ClCompile Include="Network\Session\Stream.cpp" />
     <ClCompile Include="Util\Task.cpp" />
     <ClCompile Include="Util\Thread.cpp" />
     <ClCompile Include="Util\Vector2D.cpp" />

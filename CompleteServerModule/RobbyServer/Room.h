@@ -22,6 +22,7 @@ public:
 	int setState(ROOM_STATE);
 	INT64 roomNumber();
 	bool isEnter(int role);
+	std::vector<User *> & UserInfo();
 public:
 	volatile int _allcnt;
 	volatile int _kilCnt;

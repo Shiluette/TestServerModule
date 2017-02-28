@@ -16,7 +16,7 @@ UserManager::~UserManager()
 	SLog(L"** _userPool ALL DELETE **");
 }
 
-INT64 UserManager::login(UINT64 oid)
+INT64 UserManager::login(UINT64 & oid, wstr_t & id)
 {
 	if (!_logoutindex.empty()) {
 		_lock.lock(_FILENAME, __LINE__);
@@ -25,12 +25,12 @@ INT64 UserManager::login(UINT64 oid)
 		auto result = _login.insert(index);
 		_lock.Unlock();
 		if (result.second == false) SLog(L" !!!! UserManager Login Error !!!");
-		_userPool[index]->set(oid, index);
+		_userPool[index]->set(oid, index, id);
 		return index;
 	}
 	for (auto i = 0; i < 500; ++i) {
 		if (_userPool[i]->oid() != -1) continue;
-		_userPool[i]->set(oid, i);
+		_userPool[i]->set(oid, i, id);
 		_lock.lock(_FILENAME, __LINE__);
 		auto result = _login.insert(i);
 		_lock.Unlock();

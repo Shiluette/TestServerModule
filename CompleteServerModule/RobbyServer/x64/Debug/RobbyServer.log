@@ -1,17 +1,4 @@
-﻿  stdafx.cpp
-c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(1544): warning C4091: 'typedef ': 변수를 선언하지 않으면 '' 왼쪽은 무시됩니다.
-c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(3190): warning C4091: 'typedef ': 변수를 선언하지 않으면 '' 왼쪽은 무시됩니다.
-d:\프로젝트 관리 폴더\testservermodule\completeservermodule\completeservermodule\network\server\server.h(9): warning C4091: 'typedef ': 변수를 선언하지 않으면 'SERVERSTATE' 왼쪽은 무시됩니다.
-cl : 명령줄 warning D9030: '/Gm'이(가) 다중 처리와 호환되지 않습니다. /MP 스위치를 무시합니다.
-  UserManager.cpp
-d:\프로젝트 관리 폴더\testservermodule\completeservermodule\robbyserver\usermanager.cpp(45): warning C4244: '인수': 'INT64'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-d:\프로젝트 관리 폴더\testservermodule\completeservermodule\robbyserver\usermanager.cpp(46): warning C4244: '인수': 'INT64'에서 'const int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  User.cpp
-  Room.cpp
+﻿  Room.cpp
 d:\프로젝트 관리 폴더\testservermodule\completeservermodule\robbyserver\room.cpp(30): warning C4244: '인수': 'INT64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  RobbyServer.cpp
-  RobbyProcess.cpp
-  코드를 생성하고 있습니다...
-d:\프로젝트 관리 폴더\testservermodule\completeservermodule\robbyserver\user.cpp(73): warning C4172: 지역 변수 또는 임시: id의 주소를 반환하고 있습니다.
-  RobbyServer.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RobbyServer.exe
-  RobbyServer.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RobbyServer.pdb (Full PDB)
+d:\프로젝트 관리 폴더\testservermodule\completeservermodule\robbyserver\room.cpp(130): warning C4172: 지역 변수 또는 임시: info의 주소를 반환하고 있습니다.
+LINK : fatal error LNK1104: 'D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RobbyServer.ilk' 파일을 열 수 없습니다.

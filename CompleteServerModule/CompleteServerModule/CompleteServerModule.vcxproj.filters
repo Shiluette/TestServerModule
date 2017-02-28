@@ -102,9 +102,6 @@
     <ClInclude Include="ServerHeader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Network\Stream.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Database\Query.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -127,6 +124,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Network\Session\PacketHeader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Network\Session\Stream.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -197,9 +197,6 @@
     <ClCompile Include="Json\lib_json\json_writer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Network\Stream.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Database\Query.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -213,6 +210,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Database\QueryRecord.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Network\Session\Stream.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
