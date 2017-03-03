@@ -4,7 +4,8 @@ typedef enum
 {
 	STATE_NONE,
 	STATE_ROBBY,
-	STATE_ROOM,
+	STATE_ROOMUNREADY,
+	STATE_ROOMREADY,
 	STATE_GAMEING,
 }USER_STATE;
 typedef enum
@@ -36,6 +37,8 @@ public:
 	INT64 & uid();
 	wstr_t & id();
 	void clear();
+	void ready();
+	void unready();
 };
 
 

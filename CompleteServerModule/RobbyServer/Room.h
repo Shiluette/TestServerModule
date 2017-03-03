@@ -44,12 +44,16 @@ public:
 	void addEnterUser(User * user);
 	void LeaveUser(User * user);
 	void execute();
+	Room * findRoom(int roomNumber);
 };
 
-class EnterRoomWork : public Work
+class AutoIoSupervise : public Work
 {
+public:
+	AutoIoSupervise();
 	void tick()
 	{
 		RoomManager::getInstance().execute();
 	}
 };
+static AutoIoSupervise autoiosupervisor;

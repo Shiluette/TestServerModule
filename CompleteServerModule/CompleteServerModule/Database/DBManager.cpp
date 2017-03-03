@@ -27,27 +27,28 @@ void DBManager::initialize(jsonValue_t * config)
 		SErrLog(L"** not exist process setting **");
 		return;
 	}
-	int processCount = DataBase.get("ThreadCount", 0).asInt();
-	if (processCount == 0) {
+	_workCount = DataBase.get("ThreadCount", 0).asInt();
+	if (_workCount == 0) {
 		SLog(L" ** not to do this Thread create, input zero count **");
 		return;
 	}
 	std::array<wchar_t, SIZE_256> temp;
+	temp.assign(NULL);
 	str_t serverName = DataBase.get("ServerName", "").asString();
-	StrConvA2W(&serverName.front(), temp.data(), serverName.size());
-	_serverName = temp.data();
-
+	StrConvA2W((char *)serverName.c_str(), temp.data(), serverName.size()+1);
+	_serverName.append(temp.data());//_serverName = temp.data();
+	temp.assign(NULL);
 	str_t db = DataBase.get("DB", "").asString();
-	StrConvA2W(&db.front(), temp.data(), db.size());
-	_dbName = temp.data();
-
+	StrConvA2W(&db.front(), temp.data(), db.size()+1);
+	_dbName.append(temp.data()); //_dbName = temp.data();
+	temp.assign(NULL);
 	str_t login = DataBase.get("Login", "").asString();
-	StrConvA2W(&login.front(), temp.data(), login.size());
-	_login = temp.data();
-
+	StrConvA2W(&login.front(), temp.data(), login.size()+1);
+	_login.append(temp.data());//_login = temp.data();
+	temp.assign(NULL);
 	str_t pw = DataBase.get("Password", "").asString();
-	StrConvA2W(&pw.front(), temp.data(), pw.size());
-	_password = temp.data();
+	StrConvA2W(&pw.front(), temp.data(), pw.size()+1);
+	_password.append(temp.data()); //_password = temp.data();
 
 	_queryQueue = new ThreadJobQueue<Query *>(L"DBQueueJob");
 

@@ -1,0 +1,17 @@
+D2017-03-02T14:56:38.143	System : 0x396E29F8	** create thread: id[0x3b68dab1] || name[TaskManager], pool size[1]
+D2017-03-02T14:56:38.570	System : 0x396E29F8	ODBC DataBase Connection Success
+D2017-03-02T14:56:38.602	System : 0x396E29F8	** create thread: id[0xf75c4319] || name[ODBCDatabase], pool size[2]
+D2017-03-02T14:56:38.649	System : 0x396E29F8	** create thread: id[0xb79e47f9] || name[LobbyServer], pool size[3]
+D2017-03-02T14:56:38.657	LobbyServer : 0xB79E47F9	** create thread: id[0xa636c1c9] || name[ContentsProcess], pool size[4]
+D2017-03-02T14:56:38.736	LobbyServer : 0xB79E47F9	** create thread: id[0x63284a22] || name[ContentsProcess], pool size[5]
+D2017-03-02T14:56:38.778	LobbyServer : 0xB79E47F9	** create thread: id[0xdb2fbef0] || name[ContentsProcess], pool size[6]
+D2017-03-02T14:56:38.823	LobbyServer : 0xB79E47F9	** create thread: id[0x9ebd139c] || name[ContentsProcess], pool size[7]
+D2017-03-02T14:56:38.872	LobbyServer : 0xB79E47F9	** worker thread count : 4
+D2017-03-02T14:56:39.906	LobbyServer : 0xB79E47F9	### RobbyServer Server Start~! ###
+D2017-03-02T14:56:39.942	LobbyServer : 0xB79E47F9	** Server Listen socket created . IP : 127.0.0.1 , Prot : 9100 
+D2017-03-02T14:56:39.982	LobbyServer : 0xB79E47F9	** create thread: id[0x53f33772] || name[IOCPServer], pool size[8]
+D2017-03-02T14:56:39.026	LobbyServer : 0xB79E47F9	** create thread: id[0xef2dbb76] || name[IOCPServer], pool size[9]
+D2017-03-02T14:56:39.068	LobbyServer : 0xB79E47F9	** create thread: id[0x3e819471] || name[IOCPServer], pool size[10]
+D2017-03-02T14:56:39.110	LobbyServer : 0xB79E47F9	** create thread: id[0x9429826d] || name[IOCPServer], pool size[11]
+D2017-03-02T14:56:39.150	LobbyServer : 0xB79E47F9	** create thread: id[0xea093330] || name[IOCPServer], pool size[12]
+D2017-03-02T14:57:11.783	IOCPServer : 0x53F33772	 ** Client accept who's [127.0.0.1]

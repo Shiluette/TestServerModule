@@ -50,7 +50,15 @@ public:
 class PK_C_REQ_GAMEOUT : public Packet
 {
 public:
+	Int64 uid;
 	PacketType type() {return PE_C_REQ_GAMEOUT;}
+	void encode(Stream &stream) {
+		stream << (Int64)this->type();
+		stream << uid;
+	}
+	void decode(Stream &stream) {
+		stream >> &uid;
+	}
 };
 
 class PK_C_REQ_GAMEREADYOFF : public Packet

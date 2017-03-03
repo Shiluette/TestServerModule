@@ -253,3 +253,14 @@ void RoomManager::execute()
 		SAFE_DELETE(i);
 }
 
+Room * RoomManager::findRoom(int roomNumber)
+{
+	return _totalRoom[roomNumber];
+}
+
+AutoIoSupervise::AutoIoSupervise()
+{
+	const int AUTO_IO_SUPERVISE = 1000;
+	TaskNode * node = new TaskNode(this, AUTO_IO_SUPERVISE, TICK_INFINTY);
+	TaskManager::getInstance().add(node);
+}

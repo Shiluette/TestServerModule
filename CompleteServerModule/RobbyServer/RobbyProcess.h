@@ -5,7 +5,6 @@ class RobbyProcess : public ContentsProcess
 {
 public:
 	RobbyProcess();
-	virtual ~RobbyProcess();
 	void registSubPacketFunc();
 	
 private:

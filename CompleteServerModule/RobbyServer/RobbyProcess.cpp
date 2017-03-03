@@ -39,6 +39,7 @@ public:
 };
 class Query_Logout : public Query
 {
+public:
 	wstr_t _id;
 	Query_Logout() {
 		_statement->setQuery(this->procedure(), QUERY_NOT_RETURN);
@@ -79,19 +80,22 @@ public:
 	}
 };
 
-
-
-
 RobbyProcess::RobbyProcess()
 {
-}
-
-RobbyProcess::~RobbyProcess()
-{
+	this->registSubPacketFunc();
 }
 
 void RobbyProcess::registSubPacketFunc()
 {
+	_runFuncTable.insert(make_pair(PE_C_REQ_LOGIN, &RobbyProcess::CPacket_LOGIN));
+	_runFuncTable.insert(make_pair(PE_C_REQ_JOIN, &RobbyProcess::CPacket_JOIN));
+	_runFuncTable.insert(make_pair(PE_C_REQ_SELECTPART, &RobbyProcess::CPacket_SELECTPART));
+	_runFuncTable.insert(make_pair(PE_C_REQ_SEARCHROOM, &RobbyProcess::CPacket_SEARCHROOM));
+	_runFuncTable.insert(make_pair(PE_C_REQ_GAMEREADYON, &RobbyProcess::CPacket_GAMEREADYON));
+	_runFuncTable.insert(make_pair(PE_C_REQ_GAMEREADYOFF, &RobbyProcess::CPacket_GAMEREADYOFF));
+	_runFuncTable.insert(make_pair(PE_C_REQ_EXITROOM, &RobbyProcess::CPacket_EXITROOM));
+	_runFuncTable.insert(make_pair(PE_C_REQ_GAMEOUT, &RobbyProcess::CPacket_GAMEOUT));
+
 }
 
 
@@ -135,13 +139,14 @@ void RobbyProcess::CPacket_SELECTPART(Session * session, Packet * rowPacket)
 	}
 }
 // 방 찾기
+// TODO : 역할이 정해지지 않은 플레이어 일 경우 방 찾기가 활성화 안되게 제한 (완료)
+// Packet을 보내서 플레이어가 역할을 고르고 방에 입장 할 수 있게 유도!
 void RobbyProcess::CPacket_SEARCHROOM(Session * session, Packet * rowPacket)
 {
 	PK_C_REQ_SEARCHROOM * packet = (PK_C_REQ_SEARCHROOM *)rowPacket;
 	User * pUser = UserManager::getInstance().getUser(packet->uid);
 	if (pUser->role() == ROLE_NONE) {
-																							// TODO : 역할이 정해지지 않은 플레이어 일 경우 방 찾기가 활성화 안되게 제한 (완료)
-																							// Packet을 보내서 플레이어가 역할을 고르고 방에 입장 할 수 있게 유도!
+																							
 		PK_S_NTF_ROOMSEARCHNOTROLE sPacket;
 		session->sendPacket(&sPacket);
 		return;
@@ -150,34 +155,73 @@ void RobbyProcess::CPacket_SEARCHROOM(Session * session, Packet * rowPacket)
 	RoomManager::getInstance().addEnterUser(pUser);
 }
 
-																							// TODO : 방에 들어 갔을 경우 방 입장 완료 패킷을 전송해야 한다.(추가 제작 필요)(완료)
+
 // 준비상태 ON
+// TODO : 준비 상태로 변경을 시켜준 뒤 다른 유저들에게 상태 변경을 송신해야한다.
 void RobbyProcess::CPacket_GAMEREADYON(Session * session, Packet * rowPacket)
 {
-
+	PK_C_REQ_GAMEREADYON * packet = (PK_C_REQ_GAMEREADYON *)rowPacket;
+	User * user = UserManager::getInstance().getUser(packet->uid);
+	user->ready();
+	PK_S_BRD_ROOMSTATE sPacket;
+	sPacket.update = 3;
+	sPacket.uid = packet->uid;
+	Session * pSession = nullptr;
+	// 유저를 찾아 Ready 상태로 변경
+	vector <User *> userinfo = RoomManager::getInstance().findRoom(user->roomNumber())->UserInfo();
+	for (auto i : userinfo) {
+		pSession = SessionManager::getInstance().session(i->oid());
+		pSession->sendPacket(&sPacket);
+	}																						
 }
+
+
 // 준비 상태 OFF
+// TODO : 준비해제 상태로 변경을 시켜준 뒤 다른 유저들에게 상태 변경을 송신해야한다.
 void RobbyProcess::CPacket_GAMEREADYOFF(Session * session, Packet * rowPacket)
 {
-
+	PK_C_REQ_GAMEREADYOFF * packet = (PK_C_REQ_GAMEREADYOFF *)rowPacket;
+	User * user = UserManager::getInstance().getUser(packet->uid);
+	user->unready();
+	PK_S_BRD_ROOMSTATE sPacket;
+	sPacket.update = 4;
+	sPacket.uid = packet->uid;
+	Session * pSession = nullptr;
+	// 유저를 찾아 UnReady 상태로 변경
+	vector <User *> userinfo = RoomManager::getInstance().findRoom(user->roomNumber())->UserInfo();
+	for (auto i : userinfo) {
+		pSession = SessionManager::getInstance().session(i->oid());
+		pSession->sendPacket(&sPacket);
+	}
 }
+
 // 방 나가기
+// TODO : 나가기 데이터를 입력하여 RoomManager에게 전달 해야 한다.(완료)
+// 실제 방을 나가는 작업은 RoomManager에서(ContentsThread의 단일 스레드로 Lock 없게)
 void RobbyProcess::CPacket_EXITROOM(Session * session, Packet * rowPacket)
 {
 	PK_C_REQ_EXITROOM * packet = (PK_C_REQ_EXITROOM *)rowPacket;
 
 	User * pUser = UserManager::getInstance().getUser(packet->uid);
-																							// TODO : 나가기 데이터를 입력하여 RoomManager에게 전달 해야 한다.(완료)
-																							// 실제 방을 나가는 작업은 RoomManager에서(ContentsThread의 단일 스레드로 Lock 없게)
+																				
 	RoomManager::getInstance().LeaveUser(pUser);
 }
+
 // 게임 나가기
+// TODO : 유저의 게임종료로 지정되 있던 데이터들을 기본값(default)으로 정정필요
+// DB에 로그오프 시간 작성.
 void RobbyProcess::CPacket_GAMEOUT(Session * session, Packet * rowPacket)
 {
-																							// TODO : 유저의 게임종료로 지정되 있던 데이터들을 기본값(default)으로 정정필요
-																							// DB에 로그오프 시간 작성.
+
+	Query_Logout * query = new Query_Logout();
 	PK_C_REQ_GAMEOUT * packet = (PK_C_REQ_GAMEOUT *)rowPacket;
+	User * pUser = UserManager::getInstance().getUser(packet->uid);
+	query->_id.assign(pUser->id());
+	
+	DBManager::getInstance().pushQuery(query);									// DB 작성 요청
+	
+	UserManager::getInstance().logout(packet->uid);								// User 로그오프 작업
 
 
-	SessionManager::getInstance().closeSession(session);									// Session 닫기(소켓닫고 기타 등등등)
+	SessionManager::getInstance().closeSession(session);						// Session 닫기(소켓닫고 기타 등등등)
 }

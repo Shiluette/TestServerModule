@@ -27,12 +27,12 @@ void User::set(UINT64 oid, INT64 uid, wstr_t id, USER_STATE state, USER_ROLE rol
 
 void User::enterRoom(int roomNumber)
 {
-	if (_state == STATE_ROOM || _state == STATE_GAMEING) {
+	if (_state == STATE_ROOMUNREADY || _state == STATE_ROOMREADY || _state == STATE_GAMEING) {
 		SLog(L"!! Enter room error oid : [%I64u] , uid : [%I64d]", _oid, _uid);
 		return;
 	}
 	_roomNumber = roomNumber;
-	_state = STATE_ROOM;
+	_state = STATE_ROOMUNREADY;
 	SLog(L"!! Enter room oid : [%I64u] , uid : [%I64d], Room Number : [ %d ]", _oid, _uid, roomNumber);
 }
 
@@ -92,4 +92,14 @@ void User::clear()
 	_state = STATE_NONE;
 	_role = ROLE_NONE;
 	_roomNumber = 7000;
+}
+
+void User::ready()
+{
+	_state = STATE_ROOMREADY;
+}
+
+void User::unready()
+{
+	_state = STATE_ROOMUNREADY;
 }

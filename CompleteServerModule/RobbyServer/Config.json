@@ -1,0 +1,23 @@
+{
+	"Name" : "RobbyServer",
+   "Server" : {
+   "IP" : "127.0.0.1",
+   "PORT" : 9100,
+   "ThreadCount" : 4
+   },
+   "Contents" : {
+      "ThreadCount" : 4
+   },
+   "Log" : {
+	"Path" : "RoomLog.log",
+	"Prefix" : "System",
+	"Type" : "WithFile"
+   },
+   "DataBase" : {
+   "ThreadCount" : 1,
+   "ServerName" : "Besideyou_",
+   "DB" : "Besideyou_",
+   "Login" : "DevelopAdmin",
+   "Password"  : "admin"
+   }
+}
