@@ -22,7 +22,7 @@ public:
 	int setState(ROOM_STATE);
 	INT64 roomNumber();
 	bool isEnter(int role);
-	std::vector<User *> & UserInfo();
+	std::vector<User *> * UserInfo();
 public:
 	volatile int _allcnt;
 	volatile int _kilCnt;
@@ -35,7 +35,7 @@ class RoomManager : public Singleton<RoomManager>
 	typedef std::pair<User *, bool> EntOutUser;	// second [true] : 입장 : false : 나가기
 	typedef std::pair<volatile int *, int> index_;
 	std::array<Room *, 500>_totalRoom;
-	std::vector<index_> _UserCntFerIndex;
+	std::vector<index_> _UserCntFerIndex; // firsst : 유저 숫자, second : 방 인덱스 번호
 	ThreadJobQueue<EntOutUser *>  * _enterUserQueue;
 	Lock _lock;
 public:

@@ -17,7 +17,7 @@ void serverProcess()
 int main()
 {
 	DBManager::getInstance().run();
-
+	UserManager::getInstance();
 	shared_ptr<Thread> serverThread(new Thread(new thread_t(serverProcess), L"LobbyServer"));
 	return 0;
 }

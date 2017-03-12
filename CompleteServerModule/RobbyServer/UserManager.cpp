@@ -4,8 +4,11 @@
 
 UserManager::UserManager() : _lock(L"UserManager")
 {
-	for (auto user : _userPool)
-		user = new User();
+	/*for (auto user : _userPool)
+		user = new User();*/
+	for (auto i = 0; i < 500; ++i) {
+		_userPool[i] = new User();
+	}
 	SLog(L"** _userPool 'new' Create **");
 }
 
@@ -29,7 +32,7 @@ INT64 UserManager::login(UINT64 & oid, wstr_t & id)
 		return index;
 	}
 	for (auto i = 0; i < 500; ++i) {
-		if (_userPool[i]->oid() != -1) continue;
+		if (_userPool[i]->uid() != -1) continue;
 		_userPool[i]->set(oid, i, id);
 		_lock.lock(_FILENAME, __LINE__);
 		auto result = _login.insert(i);

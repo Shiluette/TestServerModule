@@ -7,11 +7,11 @@
 Packet * PacketAnalyzer::analyzer(const char * rPacket, size_t size)
 {
 	size_t offset = 0;
-	PacketType type[1] = { (PacketType)0, };
-	memcpy_s((void*)type, sizeof(type), (void*)rPacket, sizeof(type));
+	PacketType type = (PacketType)0;
+	memcpy_s((void*)&type, sizeof(type), (void*)rPacket, sizeof(type));
 	offset += sizeof(type);
 
-	Packet * packet = PacketFactory::getInstance().getPacket(type[0]);
+	Packet * packet = PacketFactory::getInstance().getPacket(type);
 
 	if (packet) {
 		if (offset < size) {

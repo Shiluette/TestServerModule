@@ -17,6 +17,7 @@ private:
 	static DWORD WINAPI acceptThread(LPVOID serverPtr);
 	static DWORD WINAPI workerThread(LPVOID serverPtr);
 public:
+	IOCPServer() : Server(nullptr){}
 	IOCPServer(ContentsProcess * contentsProcess);
 	virtual ~IOCPServer();
 	bool run();

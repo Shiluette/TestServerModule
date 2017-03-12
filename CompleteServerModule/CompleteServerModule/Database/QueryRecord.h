@@ -16,9 +16,12 @@ public:
 	void setColumParam(SQLHSTMT * hstm);
 	bool get(wchar_t * fieldName, char * fieldValue);
 	bool get(wchar_t * fieldName, wchar_t * fieldValue);
-	bool get(wchar_t * fieldName, int & fieldValue);
-	bool get(wchar_t * fieldName, float & fieldValue);
-	bool get(wchar_t * fieldName, double & fieldValue);
-	bool get(wchar_t * fieldName, long & fieldValue);
+	bool get(wchar_t * fieldName, int * fieldValue);
+	bool get(wchar_t * fieldName, float * fieldValue);
+	bool get(wchar_t * fieldName, double * fieldValue);
+	bool get(wchar_t * fieldName, long * fieldValue);
 	bool moveNext();
+	bool moveBefore();
+	bool moveFirst();
+	bool moveLast();
 };

@@ -6,6 +6,7 @@
 
 Room::Room()
 {
+	_state = BOTH_LEAK;
 	_kilCnt = 0;
 	_surCnt = 0;
 	static int roomcnt = 1;
@@ -123,9 +124,9 @@ bool Room::isEnter(int role)
 	return false;
 }
 
-std::vector<User*>& Room::UserInfo()
+std::vector<User*> * Room::UserInfo()
 {
-	std::vector<User *> info = _enteredUser;
+	std::vector<User *>  * info = &_enteredUser;
 
 	return info;
 }
@@ -138,7 +139,7 @@ std::vector<User*>& Room::UserInfo()
 
 RoomManager::RoomManager() : _lock(L"RoomManager")
 {
-	_UserCntFerIndex.resize(500);
+	_UserCntFerIndex.reserve(500);//resize(500);
 	// Queue 생성
 	_enterUserQueue = new ThreadJobQueue<EntOutUser *>(L"RoomManager");
 	for (int i = 0; i < 500; ++i) {
@@ -201,15 +202,17 @@ void RoomManager::execute()
 		if (popEntQut[i]->second == true) {
 			int uRole = popUser->role();
 			for (auto mindex : _UserCntFerIndex) {
-				if (!_totalRoom[mindex.second]->isEnter(uRole))continue;			// in Room.....
-				_totalRoom[mindex.second]->enter(popUser);
-				std::vector<User *> UserInfo = _totalRoom[mindex.second]->UserInfo();
+				if (!_totalRoom[mindex.second - 1]->isEnter(uRole))continue;			// in Room.....
+				_totalRoom[mindex.second - 1]->enter(popUser);
+				SLog(L"~~~ Enter Room To User .[UID : %d ] [ROOMNUMBER : %d ] [ROLE : %d] ~~~", popUser->uid(), popUser->roomNumber(), popUser->role());
+				std::vector<User *> * UserInfo = _totalRoom[mindex.second - 1]->UserInfo();
 				PK_S_ANS_ENTERROOMSUCC cPacket;
-				cPacket.ucount = (BYTE)UserInfo.size();
+				cPacket.roomNumber = mindex.second;
+				cPacket.ucount = (BYTE)UserInfo->size();
 				for (auto iter = 0; iter < cPacket.ucount; ++iter) {
-					cPacket.uid[iter] = UserInfo[iter]->uid();
-					cPacket.id[iter].assign(UserInfo[iter]->id());
-					cPacket.role[iter] = (BYTE)UserInfo[iter]->role();
+					cPacket.uid[iter] = (*UserInfo)[iter]->uid();
+					cPacket.id[iter].assign((*UserInfo)[iter]->id());
+					cPacket.role[iter] = (BYTE)(*UserInfo)[iter]->role();
 				}
 				// 진입하는 유저에게 방에 대한 데이터 송신
 				Session * session = SessionManager::getInstance().session(popUser->oid());
@@ -219,12 +222,12 @@ void RoomManager::execute()
 				sPacket.update = (uRole == ROLE_KILLER) ? 10 : 11;
 				sPacket.id.assign(popUser->id());
 				// 기존 방에 있던 유저들에게 신규 유저 데이터 송신
-				for (auto i : UserInfo) {
+				for (auto i : *UserInfo) {
 					if (popUser->oid() == i->oid()) continue;
 					session = SessionManager::getInstance().session(i->oid());
 					session->sendPacket(&sPacket);
 				}
-				
+				break;
 			}
 		}
 		// Leave 시
@@ -240,8 +243,8 @@ void RoomManager::execute()
 				Session * session = SessionManager::getInstance().session(popUser->oid());
 				session->sendPacket(&cPacket);
 				// 방의 변경 정보를 방에 있는 유저들에세 송신
-				std::vector<User *> UserInfo = _totalRoom[roomNumber]->UserInfo();
-				for (auto i : UserInfo) {
+				std::vector<User *> * UserInfo = _totalRoom[roomNumber]->UserInfo();
+				for (auto i : *UserInfo) {
 					session = SessionManager::getInstance().session(i->oid());
 					session->sendPacket(&sPacket);
 				}
@@ -249,18 +252,19 @@ void RoomManager::execute()
 			}
 		}
 	}
-	for (auto i : popEntQut)
-		SAFE_DELETE(i);
+	for (auto i = 0; i < popEntQut.size(); ++i) {
+		SAFE_DELETE(popEntQut[i]);
+	}
 }
 
 Room * RoomManager::findRoom(int roomNumber)
 {
-	return _totalRoom[roomNumber];
+	return _totalRoom[roomNumber - 1];
 }
 
 AutoIoSupervise::AutoIoSupervise()
 {
-	const int AUTO_IO_SUPERVISE = 1000;
+	const int AUTO_IO_SUPERVISE = 1;
 	TaskNode * node = new TaskNode(this, AUTO_IO_SUPERVISE, TICK_INFINTY);
 	TaskManager::getInstance().add(node);
 }

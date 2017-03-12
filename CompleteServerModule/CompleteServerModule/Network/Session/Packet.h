@@ -446,12 +446,14 @@ class PK_S_ANS_ENTERROOMSUCC : public Packet
 {
 public:
 	PacketType type() {return PE_S_ANS_ENTERROOMSUCC;}
+	Int64 roomNumber;
 	BYTE ucount;
 	Int64 uid[4];
 	wstr_t id[4];
 	BYTE role[4];
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
+		stream << roomNumber;
 		stream << ucount;
 		for (int cnt = 0; cnt < ucount; ++cnt) {
 			stream << uid[cnt];
@@ -461,6 +463,7 @@ public:
 	}
 
 	void decode(Stream &stream) {
+		stream >> &roomNumber;
 		stream >> &ucount;
 		for (int cnt = 0; cnt < ucount; ++cnt) {
 			stream >> &(uid[cnt]);
@@ -745,17 +748,20 @@ public:
 	Int64 uid;
 	BYTE update;
 	wstr_t id;
+	Int64 roomNumber;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
 		stream << uid;
 		stream << update;
 		stream << id;
+		stream << roomNumber;
 	}
 
 	void decode(Stream &stream) {
 		stream >> &uid;
 		stream >> &update;
 		stream >> &id;
+		stream >> &roomNumber;
 	}
 
 };

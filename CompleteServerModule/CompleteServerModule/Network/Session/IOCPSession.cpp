@@ -22,10 +22,10 @@ void IoData::clear()
 int32_t IoData::setupTotalBytes()
 {
 	packet_size_t offset = 0;
-	packet_size_t packetLen[1] = { 0, };
+	packet_size_t packetLen = 0;
 	if (_totalBytes == 0) {
-		memcpy_s((void*)packetLen, sizeof(packetLen), (void *)_buffer.data(), sizeof(packetLen));
-		_totalBytes = (size_t)packetLen[0];
+		memcpy_s((void*)&packetLen, sizeof(packet_size_t), (void *)_buffer.data(), sizeof(packet_size_t));
+		_totalBytes = (size_t)packetLen;
 	}
 	offset += sizeof(packetLen);
 	return offset;
@@ -73,10 +73,10 @@ bool IoData::setData(Stream & stream)
 	// 코딩 센스! memcpy_s 인자  포인터 값 넘겨야함
 	// Packetlen = 인자를 넣을때 (void*)& packetLen으로 넣는 방안
 	// 배열의 이름은 포인터니 packetLen[1] 으로 하여 (void*)PacketLen 이 둘의 차이점.
-	packet_size_t packetLen[1] = { sizeof(packet_size_t) + (packet_size_t)stream.size(), };
+	packet_size_t packetLen = sizeof(packet_size_t) + (packet_size_t)stream.size();
 
 	// 데이텅 앞부분에 데이터의 총 크기를 작성
-	memcpy_s(buf + offset, _buffer.max_size(), (void *)packetLen, sizeof(packetLen));
+	memcpy_s(buf + offset, _buffer.max_size(), (void *)&packetLen, sizeof(packetLen));
 
 	// 앞 부분의 4바이트를 사용하였음 -> offset move
 	offset += sizeof(packetLen);
@@ -181,7 +181,7 @@ Package * IOCPSession::onRecv(size_t size)
 	}
 
 	packet_size_t packetdataSize = _ioData[IO_READ].totalByte() - sizeof(packet_size_t);
-	byte * packetData = (byte*)_ioData[IO_READ].data() - offset;
+	byte * packetData = (byte*)_ioData[IO_READ].data() + offset;
 
 	Packet *packet = PacketAnalyzer::getInstance().analyzer((const char*)packetData, packetdataSize);
 	if (packet == nullptr) {
@@ -195,7 +195,7 @@ Package * IOCPSession::onRecv(size_t size)
 
 }
 
-void IOCPSession::reccvStandBy()
+void IOCPSession::recvStandBy()
 {
 	_ioData[IO_READ].clear();
 

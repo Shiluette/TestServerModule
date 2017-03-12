@@ -71,8 +71,8 @@ INT64 & User::roomNumber()
 
 UINT64 & User::oid()
 {
-	UINT64 id = VolatileCast(_oid);
-	return id;
+	UINT64 * num2 = const_cast<UINT64 *>(&_oid);
+	return *num2;
 }
 
 INT64 & User::uid()

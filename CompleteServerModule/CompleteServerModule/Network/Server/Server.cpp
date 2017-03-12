@@ -3,7 +3,7 @@
 
 Server::Server(ContentsProcess * contentsprocess)
 {
-	//SLog(L" ## init network 생성자 준비");
+	SLog(L" ## init network 생성자 준비");
 	_contentsprocess = contentsprocess;
 	_state = SERVER_STOP;
 	jsonValue_t config;

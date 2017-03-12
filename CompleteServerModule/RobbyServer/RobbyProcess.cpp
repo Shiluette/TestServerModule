@@ -14,14 +14,14 @@ public:
 	}
 	virtual ~Query_Login() {
 		int result = 100;
-		_recode.get(L"result", result);
+		_recode.get(L"result", &result);
 		Session * session = SessionManager::getInstance().session(_oid);
 		if (result == 0) {
 			// Packet create
 			PK_S_ANS_LOGINSUCC sPacket;
 			// user uid get... userManager으로 User 설정 완료.
 			sPacket.uid = UserManager::getInstance().login(_oid, _id);
-			SLog(L"** User Login   - id : [ %s ]  oid : [%I64u]  , uid : [%I64d]", _id ,_oid, _uid);
+			SLog(L"** User Login   - id : [ %s ]  oid : [%I64u]  , uid : [%I64d]", _id.c_str() ,_oid, _uid);
 			// TODO : SendPacket을 해줘야 한다. -> Contents로? 아니면 여기서? 
 			// 어떻게 함? 어차피 Send가 논블로킹이라서 return value 바로 나온다.
 			session->sendPacket(&sPacket);
@@ -61,9 +61,9 @@ public:
 	}
 	virtual ~Query_Join() {
 		int result = 100;
-		_recode.get(L"result", result);
+		_recode.get(L"result", &result);
 		Session * session = SessionManager::getInstance().session(_oid);
-		if (result == 1) {
+		if (result == 100) {
 			PK_S_ANS_JOINSUCC sPacket;
 			session->sendPacket(&sPacket);
 		}
@@ -133,6 +133,7 @@ void RobbyProcess::CPacket_SELECTPART(Session * session, Packet * rowPacket)
 	PK_C_REQ_SELECTPART * packet = (PK_C_REQ_SELECTPART *)rowPacket;
 	User * pUser = UserManager::getInstance().getUser(packet->uid);
 	if ((USER_ROLE)packet->role == pUser->setRole((USER_ROLE)packet->role)) {
+		SLog(L" -- [Uid : %d ] , [SelectPart : %d ] --", pUser->uid(), pUser->role());
 		PK_S_ANS_SELECTPARTSUCC sPacket;
 		sPacket.role = packet->role;
 		session->sendPacket(&sPacket);
@@ -168,8 +169,8 @@ void RobbyProcess::CPacket_GAMEREADYON(Session * session, Packet * rowPacket)
 	sPacket.uid = packet->uid;
 	Session * pSession = nullptr;
 	// 유저를 찾아 Ready 상태로 변경
-	vector <User *> userinfo = RoomManager::getInstance().findRoom(user->roomNumber())->UserInfo();
-	for (auto i : userinfo) {
+	vector <User *> * userinfo = RoomManager::getInstance().findRoom(user->roomNumber())->UserInfo();
+	for (auto i : *userinfo) {
 		pSession = SessionManager::getInstance().session(i->oid());
 		pSession->sendPacket(&sPacket);
 	}																						
@@ -188,8 +189,8 @@ void RobbyProcess::CPacket_GAMEREADYOFF(Session * session, Packet * rowPacket)
 	sPacket.uid = packet->uid;
 	Session * pSession = nullptr;
 	// 유저를 찾아 UnReady 상태로 변경
-	vector <User *> userinfo = RoomManager::getInstance().findRoom(user->roomNumber())->UserInfo();
-	for (auto i : userinfo) {
+	vector <User *> * userinfo = RoomManager::getInstance().findRoom(user->roomNumber())->UserInfo();
+	for (auto i : *userinfo) {
 		pSession = SessionManager::getInstance().session(i->oid());
 		pSession->sendPacket(&sPacket);
 	}

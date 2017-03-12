@@ -56,5 +56,5 @@ public:
 	void onSend(size_t size);
 	void sendPacket(Packet * packet);
 	Package * onRecv(size_t size);
-	void reccvStandBy();
+	void recvStandBy();
 };

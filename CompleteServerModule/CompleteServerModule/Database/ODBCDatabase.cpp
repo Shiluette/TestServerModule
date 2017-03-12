@@ -208,7 +208,9 @@ void ODBCDatabase::execute()
 	try {
 		_retcode = SQLExecDirect(_hstmt, (SQLWCHAR*)state->query(), SQL_NTS);
 		if (_retcode != SQL_SUCCESS && _retcode != SQL_SUCCESS_WITH_INFO)throw;
-		
+		if (_retcode == SQL_ERROR) {
+			MessageBox(NULL, L"에러 발생", L"에러발생", NULL);
+		}
 	}
 	catch (...) {
 		DBManager::getInstance().pushQuery(qy);

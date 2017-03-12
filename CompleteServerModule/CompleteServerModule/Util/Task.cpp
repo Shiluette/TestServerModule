@@ -38,8 +38,10 @@ bool TaskNode::isExpired()
 void TaskNode::tick()
 {
 	if (_nextTick < NOW_TICK()) {
-		// TODO : PostQueuedCompletionStatus 사용하여 Contentsprocess에 전달하여
-		// logic 수행
+		// ERR 발생 위험..
+		/*PostQueuedCompletionStatus(handle, qkdlxm )
+		IOCPServer::getInstance().putPackage(new Package(nullptr, nullptr, this->_workobject));*/
+		_workobject->tick();
 		this->nextTick();
 	}
 }

@@ -1,0 +1,4 @@
+﻿  Room.cpp
+d:\프로젝트 관리 폴더\testservermodule\completeservermodule\robbyserver\room.cpp(31): warning C4244: '인수': 'INT64'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  RobbyServer.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RobbyServer.exe
+  RobbyServer.vcxproj -> D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\x64\Debug\RobbyServer.pdb (Full PDB)
