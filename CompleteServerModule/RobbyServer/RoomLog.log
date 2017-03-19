@@ -1,10 +1,10 @@
-D2017-03-12T19:46:54.331	System : 0x4862AF94	** create thread: id[0x9a760749] || name[TaskManager], pool size[1]
-D2017-03-12T19:46:54.700	System : 0x4862AF94	ODBC DataBase Connection Success
-D2017-03-12T19:46:54.718	System : 0x4862AF94	** create thread: id[0x1a99abc5] || name[ODBCDatabase], pool size[2]
-D2017-03-12T19:46:54.742	System : 0x4862AF94	** _userPool 'new' Create **
-D2017-03-12T19:46:54.763	System : 0x4862AF94	** create thread: id[0x453e04c2] || name[LobbyServer], pool size[3]
-D2017-03-12T19:46:54.766	LobbyServer : 0x453E04C2	** create thread: id[0x93e1cb1b] || name[ContentsProcess], pool size[4]
-D2017-03-12T19:46:54.810	LobbyServer : 0x453E04C2	** create thread: id[0xaa80976d] || name[ContentsProcess], pool size[5]
-D2017-03-12T19:46:54.837	LobbyServer : 0x453E04C2	** create thread: id[0x6d1eec72] || name[ContentsProcess], pool size[6]
-D2017-03-12T19:46:54.883	LobbyServer : 0x453E04C2	** create thread: id[0xb772dc2b] || name[ContentsProcess], pool size[7]
-D2017-03-12T19:46:54.924	LobbyServer : 0x453E04C2	 ## init network 
+D2017-03-13T18:18:56.374	System : 0x57138157	** create thread: id[0x79bd22e5] || name[TaskManager], pool size[1]
+D2017-03-13T18:18:57.989	System : 0x57138157	ODBC DataBase Connection Success
+D2017-03-13T18:18:57.009	System : 0x57138157	** create thread: id[0x48e4f2fe] || name[ODBCDatabase], pool size[2]
+D2017-03-13T18:18:57.035	System : 0x57138157	** _userPool 'new' Create **
+D2017-03-13T18:18:57.062	LobbyServer : 0x47D47B18	** create thread: id[0x4b24f79f] || name[ContentsProcess], pool size[4]
+D2017-03-13T18:18:57.057	System : 0x57138157	** create thread: id[0x47d47b18] || name[LobbyServer], pool size[3]
+D2017-03-13T18:18:57.109	LobbyServer : 0x47D47B18	** create thread: id[0xea712899] || name[ContentsProcess], pool size[5]
+D2017-03-13T18:18:57.138	LobbyServer : 0x47D47B18	** create thread: id[0x9f797d37] || name[ContentsProcess], pool size[6]
+D2017-03-13T18:18:57.169	LobbyServer : 0x47D47B18	** create thread: id[0xedb7b191] || name[ContentsProcess], pool size[7]
+D2017-03-13T18:18:57.200	LobbyServer : 0x47D47B18	 ## init network 

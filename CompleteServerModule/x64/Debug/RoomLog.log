@@ -1,16 +1,6 @@
-D2017-03-02T14:43:18.146	System : 0x3E2ABCD5	** create thread: id[0xe9ddc762] || name[TaskManager], pool size[1]
-D2017-03-02T14:43:18.178	System : 0x3E2ABCD5	 ** not to do this Thread create, input zero count **
-D2017-03-02T14:43:18.197	System : 0x3E2ABCD5	** create thread: id[0x3517291a] || name[LobbyServer], pool size[2]
-D2017-03-02T14:43:18.201	LobbyServer : 0x3517291A	 ** not to do this Thread create, input zero count **
-D2017-03-02T14:43:18.236	LobbyServer : 0x3517291A	** worker thread count : 8
-D2017-03-02T14:43:18.252	LobbyServer : 0x3517291A	### RoomServer Server Start~! ###
-D2017-03-02T14:43:18.476	LobbyServer : 0x3517291A	** Server Listen socket created . IP : 127.0.0.1 , Prot : 9100 
-D2017-03-02T14:43:18.502	LobbyServer : 0x3517291A	** create thread: id[0xb38efe6d] || name[IOCPServer], pool size[3]
-D2017-03-02T14:43:18.534	LobbyServer : 0x3517291A	** create thread: id[0x433e274e] || name[IOCPServer], pool size[4]
-D2017-03-02T14:43:18.561	LobbyServer : 0x3517291A	** create thread: id[0xc1a3a4ac] || name[IOCPServer], pool size[5]
-D2017-03-02T14:43:18.591	LobbyServer : 0x3517291A	** create thread: id[0x53e47d0f] || name[IOCPServer], pool size[6]
-D2017-03-02T14:43:18.619	LobbyServer : 0x3517291A	** create thread: id[0x506af824] || name[IOCPServer], pool size[7]
-D2017-03-02T14:43:18.651	LobbyServer : 0x3517291A	** create thread: id[0xf711950] || name[IOCPServer], pool size[8]
-D2017-03-02T14:43:18.679	LobbyServer : 0x3517291A	** create thread: id[0x5be9fc4e] || name[IOCPServer], pool size[9]
-D2017-03-02T14:43:18.709	LobbyServer : 0x3517291A	** create thread: id[0xde54cfa9] || name[IOCPServer], pool size[10]
-D2017-03-02T14:43:18.736	LobbyServer : 0x3517291A	** create thread: id[0x194116a6] || name[IOCPServer], pool size[11]
+D2017-03-13T17:58:05.353	System : 0xBE209219	** create thread: id[0xb5874bbc] || name[TaskManager], pool size[1]
+D2017-03-13T17:58:05.371	System : 0xBE209219	 ** not to do this Thread create, input zero count **
+D2017-03-13T17:58:05.384	System : 0xBE209219	** _userPool 'new' Create **
+D2017-03-13T17:58:05.394	System : 0xBE209219	** create thread: id[0xcfa92aa1] || name[LobbyServer], pool size[2]
+D2017-03-13T17:58:05.396	LobbyServer : 0xCFA92AA1	 ** not to do this Thread create, input zero count **
+D2017-03-13T17:58:05.410	LobbyServer : 0xCFA92AA1	 ## init network 

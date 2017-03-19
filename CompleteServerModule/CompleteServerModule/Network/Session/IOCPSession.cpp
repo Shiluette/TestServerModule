@@ -70,9 +70,6 @@ bool IoData::setData(Stream & stream)
 	packet_size_t offset = 0;
 	char *buf = _buffer.data();
 
-	// 코딩 센스! memcpy_s 인자  포인터 값 넘겨야함
-	// Packetlen = 인자를 넣을때 (void*)& packetLen으로 넣는 방안
-	// 배열의 이름은 포인터니 packetLen[1] 으로 하여 (void*)PacketLen 이 둘의 차이점.
 	packet_size_t packetLen = sizeof(packet_size_t) + (packet_size_t)stream.size();
 
 	// 데이텅 앞부분에 데이터의 총 크기를 작성

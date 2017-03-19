@@ -705,12 +705,12 @@ public:
 	}
 
 };
-
+// 방 정보 변경에 따른패킷
 class PK_S_BRD_GAMESTARTSUCC : public Packet
 {
 public:
 	PacketType type() {return PE_S_BRD_GAMESTARTSUCC;}
-	wstr_t IP;
+	std::string IP;
 	INT32 PORT;
 	void encode(Stream &stream) {
 		stream << (Int64)this->type();
@@ -724,7 +724,7 @@ public:
 	}
 
 };
-
+// 게임 나가기
 class PK_S_BRD_OUTGAMESTATE : public Packet
 {
 public:
@@ -785,4 +785,33 @@ class PK_S_NTF_ROOMSEARCHNOTROLE : public Packet
 {
 public:
 	PacketType type() { return PE_S_NTF_ROOMSEARCHNOTROLE; }
+};
+
+class PK_T_NTF_STARTUSERDATA : public Packet
+{
+public:
+	PacketType type() { return PE_T_NTF_STARTUSERDATA; }
+	Int64 roomNumber;
+	Int64 uid[4];
+	wstr_t id[4];
+	BYTE role[4];
+	void encode(Stream &stream) {
+		stream << (Int64)this->type();
+		stream << roomNumber;
+		for (int cnt = 0; cnt < 4; ++cnt) {
+			stream << uid[cnt];
+			stream << id[cnt];
+			stream << role[cnt];
+		}
+	}
+
+	void decode(Stream &stream) {
+		stream >> &roomNumber;
+		for (int cnt = 0; cnt < 4; ++cnt) {
+			stream >> &(uid[cnt]);
+			stream >> &(id[cnt]);
+			stream >> &(role[cnt]);
+		}
+	}
+
 };

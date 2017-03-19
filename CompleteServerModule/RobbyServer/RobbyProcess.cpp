@@ -61,7 +61,7 @@ public:
 	}
 	virtual ~Query_Join() {
 		int result = 100;
-		_recode.get(L"result", &result);
+		_recode.get(L"result",(int*)&result);
 		Session * session = SessionManager::getInstance().session(_oid);
 		if (result == 100) {
 			PK_S_ANS_JOINSUCC sPacket;
@@ -173,7 +173,32 @@ void RobbyProcess::CPacket_GAMEREADYON(Session * session, Packet * rowPacket)
 	for (auto i : *userinfo) {
 		pSession = SessionManager::getInstance().session(i->oid());
 		pSession->sendPacket(&sPacket);
-	}																						
+	}
+	// 모든 유저가 다 준비 상태가 되었을 경우 룸 서버로 가게끔 유도.
+	if (RoomManager::getInstance().findRoom(user->roomNumber())->state() == ROOM_FULL)
+	{
+		// 하기전에 룸에게 유저 정보를 미리 전송
+		PK_T_NTF_STARTUSERDATA Tpacket;
+		Tpacket.roomNumber = user->roomNumber();
+		for (auto iter = 0; iter < 4; ++iter) {
+			Tpacket.uid[iter] = ((*userinfo)[iter])->uid();
+			Tpacket.id[iter] = ((*userinfo)[iter])->id();
+			Tpacket.role[iter] = ((*userinfo)[iter])->role();
+		}
+		TerminalManager::getInstance().terminal(L"RoomServer")->sendPacket(&Tpacket);
+
+
+		// 그리고 유저에게 룸에 접속할 정보를 준다.
+		// 유저들은 5초 뒤에 인 게임에 들어가게 된다.
+		PK_S_BRD_GAMESTARTSUCC Ppacket;
+		auto pterminal = TerminalManager::getInstance().terminal(L"RoomServer");
+		Ppacket.IP = pterminal->ip();
+		Ppacket.PORT = pterminal->port();
+		for (auto i : *userinfo) {
+			pSession = SessionManager::getInstance().session(i->oid());
+			pSession->sendPacket(&Ppacket);
+		}
+	}
 }
 
 

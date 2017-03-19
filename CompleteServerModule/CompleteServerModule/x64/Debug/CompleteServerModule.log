@@ -1,2 +1,0 @@
-﻿  stdafx.cpp
-d:\프로젝트 관리 폴더\testservermodule\completeservermodule\completeservermodule\stdafx.cpp : fatal error C1041: 프로그램 데이터베이스 'D:\프로젝트 관리 폴더\TestServerModule\CompleteServerModule\CompleteServerModule\x64\Debug\CompleteServerModule.pdb'을(를) 열 수 없습니다. 여러 CL.EXE에서 동일한 .PDB 파일에 쓰는 경우 /FS를 사용하십시오.

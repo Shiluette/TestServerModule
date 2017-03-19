@@ -90,6 +90,11 @@ using namespace std;
 
 #include"Network\Server\Server.h"
 #include"Network\Server\IOCPServer.h"
+
+#include"Terminal\TerminalSession.h"
+#include"Terminal\Terminal.h"
+#include"Terminal\TerminalManager.h"
+
 #include"Util\Vector2D.h"
 #include"Util\Metrix.h"
 

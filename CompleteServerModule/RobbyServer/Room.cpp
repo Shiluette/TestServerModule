@@ -99,7 +99,7 @@ bool Room::leave(User * user)
 
 int Room::state()
 {
-	return 0;
+	return _state;
 }
 
 int Room::setState(ROOM_STATE)

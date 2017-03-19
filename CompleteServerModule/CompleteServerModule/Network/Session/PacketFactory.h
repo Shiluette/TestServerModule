@@ -55,6 +55,7 @@ public:
 			case PE_S_NTF_OVERLAPCRUSH:		return new PK_S_NTF_OVERLAPCRUSH();										// 중복뭐시기?
 			case PE_S_ANS_SELECTPARTSUCC:	return new PK_S_ANS_SELECTPARTSUCC();									// 역할 지정 성공
 			case PE_S_NTF_ROOMSEARCHNOTROLE: return new PK_S_NTF_ROOMSEARCHNOTROLE();								// 방찾기 실패 - 역할 미설정
+			case PE_T_NTF_STARTUSERDATA : return new PK_T_NTF_STARTUSERDATA();
 		}
 		return nullptr;
 	}

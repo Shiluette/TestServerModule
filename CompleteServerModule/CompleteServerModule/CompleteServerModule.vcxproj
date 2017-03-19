@@ -169,6 +169,9 @@
     <ClInclude Include="Shutdown.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Terminal\Terminal.h" />
+    <ClInclude Include="Terminal\TerminalManager.h" />
+    <ClInclude Include="Terminal\TerminalSession.h" />
     <ClInclude Include="Util\Assert.h" />
     <ClInclude Include="Util\Clock.h" />
     <ClInclude Include="Util\Config.h" />
@@ -224,6 +227,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Terminal\Terminal.cpp" />
+    <ClCompile Include="Terminal\TerminalManager.cpp" />
+    <ClCompile Include="Terminal\TerminalSession.cpp" />
     <ClCompile Include="Util\Assert.cpp" />
     <ClCompile Include="Util\Clock.cpp" />
     <ClCompile Include="Util\Config.cpp" />

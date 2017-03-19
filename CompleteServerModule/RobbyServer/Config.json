@@ -5,6 +5,12 @@
    "PORT" : 9100,
    "ThreadCount" : 4
    },
+   "Terminal":{
+	  "TerminalCount" : 1,
+	  "NAME" : ["RoomServer"],
+	  "IP" : ["127.0.0.1"],
+	  "PORT" : [9200]
+   },
    "Contents" : {
       "ThreadCount" : 4
    },

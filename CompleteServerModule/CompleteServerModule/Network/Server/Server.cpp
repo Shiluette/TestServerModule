@@ -24,6 +24,8 @@ Server::~Server()
 void Server::Initialize(jsonValue_t * config)
 {
 	// 테스크 설정
+	TerminalManager::getInstance().run(this);
+
 	TaskManager::getInstance();
 	
 	// 서버 설정
